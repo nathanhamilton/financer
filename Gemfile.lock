@@ -75,6 +75,13 @@ GEM
     guard-rspec (4.2.4)
       guard (~> 2.1)
       rspec (>= 2.14, < 4.0)
+    haml (4.0.4)
+      tilt
+    haml-rails (0.4)
+      actionpack (>= 3.1, < 4.1)
+      activesupport (>= 3.1, < 4.1)
+      haml (>= 3.1, < 4.1)
+      railties (>= 3.1, < 4.1)
     hike (1.2.3)
     i18n (0.6.9)
     jbuilder (1.5.3)
@@ -197,6 +204,8 @@ DEPENDENCIES
   faker
   guard (~> 2.3.0)
   guard-rspec
+  haml (~> 4.0.4)
+  haml-rails
   jbuilder (~> 1.2)
   jquery-rails
   launchy
