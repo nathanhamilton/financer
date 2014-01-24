@@ -1,2 +1,0 @@
-class LandingPageController < ApplicationController
-end
