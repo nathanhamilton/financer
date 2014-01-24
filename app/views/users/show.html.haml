@@ -1,0 +1,13 @@
+%h1.title
+  = @user.name
+%p Welcome to your financer profile. Please feel free to modify your personal details.
+%ul.list
+  %li
+    = @user.email
+  %li
+    =form_for @user do |f|
+      = f.label :email
+      = f.text_area :email
+      = f.submit
+
+

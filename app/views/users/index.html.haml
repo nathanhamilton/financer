@@ -1,0 +1,9 @@
+%h1 Users
+.users
+  %ol
+    - @users.each do |user|
+      %li
+        = user.name
+        = user.email
+        %a{:href => "/users/#{user.id}/edit"} Edit
+        %a{:href => "/users/#{user.id}"} View
