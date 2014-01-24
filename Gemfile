@@ -6,7 +6,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'faker'
 gem 'bcrypt-ruby'
-gem 'guard', '~> 2.3.0'
+gem 'guard'
 gem 'haml-rails'
 
 group :assets do
