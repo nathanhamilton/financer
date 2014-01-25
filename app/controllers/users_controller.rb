@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
+  before_action :find_users, only: [:show, :create, :update]
 
   def index
     @users = User.all
   end
 
   def show
-    @user = User.find(params[:id])
   end
 
   def new
@@ -27,8 +27,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(user_params)
-    @user.email = params[:user][:email]
+    @user.email = user_params[:email]
+    binding.pry
     if @user.save
       flash[:success] = "Email was successfully saved"
       redirect_to user_path(@user)
@@ -42,5 +42,9 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:email)
+  end
+
+  def find_users
+    User.find(params[:id])
   end
 end
