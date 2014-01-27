@@ -1,13 +1,10 @@
 %h1.title
   = @user.name
 %p Welcome to your financer profile. Please feel free to modify your personal details.
-%ul.list
+%ul.users
   %li
     = @user.email
-  %li
-    =form_for @user do |f|
-      = f.label :email
-      = f.text_area :email
-      = f.submit
+
+%a{:href => "#{@user.id}/edit"} Edit my personal details
 
 

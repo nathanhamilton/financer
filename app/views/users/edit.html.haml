@@ -1,0 +1,13 @@
+%h1.header_style
+  = @user.name
+%p Change your user information
+%ul.form
+  = form_for @user do |f|
+    %li
+      = f.label :name
+      = f.text_area :name
+    %li
+      = f.label :email
+      = f.text_area :email
+    %li
+      = f.submit
