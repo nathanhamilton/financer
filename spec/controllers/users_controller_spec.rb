@@ -17,37 +17,61 @@ describe UsersController do
     end
   end
 
+  describe "GET new" do
+    it "should create a new user" do
+      get :new
+      response.should be_success
+    end
+  end
+
   describe "POST create" do
     context "success" do
       it "should redirect the user to the user path" do
-        post :create, user: { name: "Bob", email: "person28@gmail.com", id: 1 }
-        response.should render :action => 'success'
+        post :create, user: {name: "Person2", email: "test@example.com", id: 1}
+        response.should redirect_to user_path(1)
       end
     end
 
     context "failure" do
       it "does something" do
-        post :create, user: {name: '', email: "nothing%@$.com", id: 2 }
-        response.should be_failure
+        User.any_instance.stub(:save).and_return false
+        post :create, user: {name: '', email: "nothing%@$.com", id: 1}
+        response.should render_template :new
       end
     end
   end
 
-  describe "PUT update" do
-    let!(:user) { FactoryGirl.create :user }
+  describe "GET edit" do
+    let!(:user) { FactoryGirl.create :user, id: 1 }
+    it "should edit the user" do
+      get :edit, id: 1
+      response.should be_success
+    end
+  end
 
+  describe "PUT update" do
+    let!(:user) { FactoryGirl.create :user, id: 1 }
     context "success" do
       it "should redirect to the users profile" do
-        PUT :update
+        put :update, id: 1, user: {name: "Foo", email: "test@example.com"}
         response.should redirect_to user_path(user)
       end
     end
 
     context "failure" do
       it "should render the show page again" do
-        PUT :update
-        response.should expect_success
+        User.any_instance.stub(:update).and_return false
+        put :update, id: 1, user: {name: "Fopp", email: "test@example.com"}
+        response.should render_template :edit
       end
+    end
+  end
+
+  describe "DELETE destroy" do
+    let!(:user) { FactoryGirl.create :user, id: 1 }
+    it "should delete the user" do
+      delete :destroy, id: 1
+      response.should redirect_to users_path
     end
   end
 end

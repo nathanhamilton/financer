@@ -1,11 +1,8 @@
 class UsersController < ApplicationController
-  before_action :find_users, only: [:show, :create, :update]
+  before_action :find_user, only: [:show, :update, :destroy]
 
   def index
     @users = User.all
-  end
-
-  def show
   end
 
   def new
@@ -18,33 +15,34 @@ class UsersController < ApplicationController
       flash[:success] = "Your account was created successfully"
       redirect_to user_path(@user)
     else
-      flash[:errors] = @user.errors.full_messages to_sentence
+      flash[:errors] = @user.errors.full_messages.to_sentence
       render :new
     end
   end
 
-  def edit
-  end
-
   def update
-    @user.email = user_params[:email]
-    binding.pry
-    if @user.save
+    if @user.update(user_params)
       flash[:success] = "Email was successfully saved"
       redirect_to user_path(@user)
     else
-      flash[:errors] = @user.errors.full_messages to_sentence
-      render :show
+      flash[:errors] = @user.errors.full_messages.to_sentence
+      render :edit
     end
+  end
+
+  def destroy
+    @user.destroy
+    flash[:success] = "User has been deleted"
+    redirect_to users_path
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:email)
+    params.require(:user).permit(:email, :name)
   end
 
-  def find_users
-    User.find(params[:id])
+  def find_user
+    @user = User.find(params[:id])
   end
 end
