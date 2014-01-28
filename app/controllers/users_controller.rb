@@ -12,20 +12,20 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = "Your account was created successfully"
+      flash[:success] = "Welcome to financer!"
       redirect_to user_path(@user)
     else
-      flash[:errors] = @user.errors.full_messages.to_sentence
+      flash[:error] = @user.errors.full_messages.to_sentence
       render :new
     end
   end
 
   def update
     if @user.update(user_params)
-      flash[:success] = "Email was successfully saved"
+      flash[:success] = "Your information was successfully saved"
       redirect_to user_path(@user)
     else
-      flash[:errors] = @user.errors.full_messages.to_sentence
+      flash[:error] = @user.errors.full_messages.to_sentence
       render :edit
     end
   end
@@ -39,7 +39,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :name)
+    params.require(:user).permit(:email, :name, :password, :password_confirmation)
   end
 
   def find_user
