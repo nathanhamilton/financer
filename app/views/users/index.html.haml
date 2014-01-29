@@ -5,5 +5,5 @@
       %li
         = user.name
         = user.email
-        %a{:href => "/users/#{user.id}/edit"} Edit
-        %a{:href => "/users/#{user.id}"} View
+        = link_to 'Edit', edit_user_path(@user)
+        = link_to 'View', user_path

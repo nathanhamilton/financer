@@ -5,6 +5,6 @@
   %li
     = @user.email
 
-%a{:href => "#{@user.id}/edit"} Edit my personal details
+= link_to 'Edit my personal details', edit_user_path(@user)
 
 
