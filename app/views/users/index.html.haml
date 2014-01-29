@@ -3,7 +3,13 @@
   %ol
     - @users.each do |user|
       %li
+        Name:
         = user.name
+      %li
+        Email:
         = user.email
-        = link_to 'Edit', edit_user_path(@user)
-        = link_to 'View', user_path
+
+        = link_to 'Edit |', edit_user_path(user)
+        = link_to 'View |', user_path(user)
+        = link_to 'Delete', user, method: :delete
+      %br/
