@@ -1,0 +1,19 @@
+%h1 Signup
+%p Your only four steps away...
+%ul.form
+  = form_for @user do |f|
+    %li
+      = f.label :name
+      = f.text_area :name
+    %li
+      = f.label :email
+      = f.text_area :email
+    %li
+      = f.label :password
+      = f.password_field :password
+    %li
+      = f.label :password_confirmation
+      = f.password_field :password_confirmation
+    %li
+      = f.submit "Sign me up!"
+

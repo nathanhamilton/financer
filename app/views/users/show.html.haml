@@ -1,0 +1,10 @@
+%h1.title
+  = @user.name
+%p Welcome to your financer profile. Please feel free to modify your personal details.
+%ul.users
+  %li
+    = @user.email
+
+= link_to 'Edit my personal details', edit_user_path(@user)
+
+
