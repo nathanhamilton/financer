@@ -1,20 +1,4 @@
 %h1.header_style
   = @user.name
 %p Change your user information
-.form
-  %ul
-    = form_for @user do |f|
-      %li
-        = f.label :name
-        = f.text_field :name
-      %li
-        = f.label :email
-        = f.text_field :email
-      %li
-        = f.label :password
-        = f.password_field :password
-      %li
-        = f.label :password_confirmation
-        = f.password_field :password_confirmation
-      %li
-        = f.submit
+= render "form"
