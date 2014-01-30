@@ -28,15 +28,12 @@ a:hover {
   text-align: left;
 }
 
-.form {
-  text-align: right;
-  ul {
-    width: 350px;
-    li {
-      list-style-type: none;
-    }
+.form ul {
+  width: 350px;
+  li {
+    list-style-type: none;
+    text-align: right;
   }
-
 }
 
 li {
