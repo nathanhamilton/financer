@@ -5,13 +5,15 @@
       = link_to 'Home', root_path
     %li
       = link_to 'About', about_path
-    %li
-      = link_to 'Users', users_path #unless current_user.admin == false
-    %li
-      = link_to 'Profile', user_path(current_user)
-    %li
-      = link_to '$ignup', signup_path
-    %li
-      = link_to 'Sign in', signin_path #unless current_user.signed_in
-    %li
-      = link_to 'Sign out', signout_path, method: 'delete' #unless current_user == nil
+    - if signed_in?
+      %li
+        = link_to 'Users', users_path if current_user.admin == true
+      %li
+        = link_to 'Profile', user_path(current_user)
+      %li
+        = link_to 'Sign out', signout_path, method: 'delete'
+    -else
+      %li
+        = link_to '$ignup', signup_path
+      %li
+        = link_to 'Sign in', signin_path
