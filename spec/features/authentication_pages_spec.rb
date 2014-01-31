@@ -4,7 +4,7 @@ describe "Authentication" do
 
   subject { page }
 
-  describe "signin page" do
+  describe "signin" do
     before { visit signin_path }
 
     it { should have_content 'Sign in' }
@@ -28,7 +28,6 @@ describe "Authentication" do
 
     describe "with valid information" do
       let!(:user) { FactoryGirl.create :user }
-
       before do
         fill_in 'Email',    with: user.email
         fill_in 'Password', with: user.password
@@ -36,18 +35,10 @@ describe "Authentication" do
       end
 
       it { should have_title user.name }
-      it { should have_link 'Profile',     href: '#' }
+      it { should have_link 'Profile',     href: user_path(user) }
       it { should have_link 'Sign out',    href: signout_path }
       it { should_not have_link 'Sign in', href: signin_path }
-
-      describe "after saving the user" do
-        before { click_button submit }
-        let(:user) { User.find_by_email "user.email" }
-
-        it { should have_link 'Sign out'}
-        it { should have_title 'user.name' }
-        it { should have_selector 'div.alert.alert-success' }
-      end
+      it { should_not have_link 'Users',   href: users_path }
     end
   end
 end
