@@ -1,0 +1,16 @@
+- provide(:title, "Sign in")
+%h1 Sign in to financer
+.form
+  %ul
+    = form_for :session, url: sessions_path do |f|
+      %li
+        = f.label :email
+        = f.text_field :email
+      %li
+        = f.label :password
+        = f.password_field :password
+      %li
+        = f.submit 'Sign in'
+%p
+  Don't have an account?
+  = link_to 'Signup', signup_path
