@@ -9,4 +9,8 @@ FactoryGirl.define do
       admin true
     end
   end
+
+  factory :bank do
+    name "Security Test Bank"
+  end
 end

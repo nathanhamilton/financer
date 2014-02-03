@@ -1,6 +1,8 @@
 Financer::Application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
+  resources :banks, except: :index
+
   root to: 'static_pages#home'
 
   get '/about',   to: 'static_pages#about'

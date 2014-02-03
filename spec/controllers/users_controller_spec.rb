@@ -52,14 +52,14 @@ describe UsersController do
   describe "PUT update" do
     let!(:user) { FactoryGirl.create :user, id: 1 }
     context "success" do
-      it "should redirect to the users profile" do
+      it "should redirect to the users profile"
         put :update, id: 1, user: {name: "Foo", email: "test@example.com"}
         response.should be_success
       end
     end
 
     context "failure" do
-      it "should render the show page again" do
+      it "should render the edit again" do
         User.any_instance.stub(:update).and_return false
         put :update, id: 1, user: {name: "Fopp", email: "test@example.com"}
         response.should render_template :edit
