@@ -16,26 +16,27 @@ a {
   color: #40991C;
   text-decoration: none;
 }
+
 a:hover {
   color: #003B0B;
 }
 
-.users a, li {
+li {
+  font-size: 14px;
   list-style-type: none;
+}
+
+.users {
   text-align: left;
 }
 
 .form ul {
   width: 350px;
   li {
-    list-style-type: none;
     text-align: right;
   }
 }
 
-li {
-  font-size: 14px;
-}
 
 /* miscellaneous */
 
