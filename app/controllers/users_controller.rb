@@ -21,6 +21,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    @banks = @user.banks
+  end
+
   def update
     if @user.update(user_params)
       flash[:success] = "Your information was successfully saved"

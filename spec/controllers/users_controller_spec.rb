@@ -59,7 +59,7 @@ describe UsersController do
     end
 
     context "failure" do
-      it "should render the show page again" do
+      it "should render the edit again" do
         User.any_instance.stub(:update).and_return false
         put :update, id: 1, user: {name: "Fopp", email: "test@example.com"}
         response.should render_template :edit
