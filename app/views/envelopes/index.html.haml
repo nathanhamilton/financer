@@ -1,0 +1,15 @@
+- provide(:title, "Envelopes")
+%h1 Envelopes
+.envelopes
+  %ol
+  - @envelopes.each do |envelope|
+    %li
+      Category:
+      = envelope.category
+    %li
+      Amount:
+      = number_to_currency(envelope.total)
+    %li
+      Bank name:
+      = envelope.bank.name
+
