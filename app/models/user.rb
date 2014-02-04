@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   before_save { self.email = email.downcase }
   has_many :banks, dependent: :destroy
+  has_many :envelopes, through: :banks
   before_create :create_remember_token
 
   validates :name, presence: true, length: { maximum: 50 }
