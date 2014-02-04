@@ -37,7 +37,7 @@ describe BanksController do
     let!(:bank) { FactoryGirl.create :bank }
 
     it "edits the bank" do
-      get :edit, id: 1
+      get :edit, id: bank.id
       response.should be_success
     end
   end
@@ -47,7 +47,7 @@ describe BanksController do
 
     context "success" do
       it "should be successful" do
-        put :update, id: 1, banks: { name: "Legacy Bank" }
+        put :update, id: bank.id, banks: { name: "Legacy Bank" }
         response.should redirect_to user_path(user)
       end
     end
@@ -64,7 +64,7 @@ describe BanksController do
     let!(:bank) { FactoryGirl.create :bank }
 
     it "deletes the selected bank" do
-      delete :destroy, id: 1
+      delete :destroy, id: bank.id
       response.should redirect_to user_path(user)
     end
   end
