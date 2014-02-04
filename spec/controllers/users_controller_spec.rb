@@ -52,7 +52,7 @@ describe UsersController do
   describe "PUT update" do
     let!(:user) { FactoryGirl.create :user, id: 1 }
     context "success" do
-      it "should redirect to the users profile"
+      it "should redirect to the users profile" do
         put :update, id: 1, user: {name: "Foo", email: "test@example.com"}
         response.should be_success
       end
