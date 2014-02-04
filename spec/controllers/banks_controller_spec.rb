@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe BanksController do
-  let!(:user) { FactoryGirl.create :user, id: 1 }
+  let!(:user) { FactoryGirl.create :user }
   before do
     controller.stub(:current_user).and_return user
     ApplicationController.tap do |controller|
@@ -54,7 +54,7 @@ describe BanksController do
 
     context "failure" do
       it "should render the edit page" do
-        put :update, id: 1, banks: { name: "" }
+        put :update, id: bank.id, banks: { name: "" }
         response.should render_template :edit
       end
     end
