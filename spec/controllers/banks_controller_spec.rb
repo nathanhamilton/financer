@@ -20,14 +20,14 @@ describe BanksController do
 
     context "success" do
       it "redirects to the user page" do
-        get :create, bank: { name: "TLC Bank" }
+        get :create, banks: { name: "TLC Bank" }
         response.should redirect_to user_path(user)
       end
     end
 
     context "failure" do
       it "renders the new page" do
-        get :create, bank: { name: "" }
+        get :create, banks: { name: "" }
         response.should render_template :new
       end
     end
@@ -53,16 +53,25 @@ describe BanksController do
 
     context "success" do
       it "should be successful" do
-        put :update, id: 1, bank: { name: "Legacy Bank" }
+        put :update, id: 1, banks: { name: "Legacy Bank" }
         response.should redirect_to user_path(user)
       end
     end
 
     context "failure" do
       it "should render the edit page" do
-        put :update, id: 1, bank: { name: "" }
+        put :update, id: 1, banks: { name: "" }
         response.should render_template :edit
       end
+    end
+  end
+
+  describe "DELETE destroy" do
+    let!(:bank) { FactoryGirl.create :bank, id: 1 }
+
+    it "deletes the selected bank" do
+      delete :destroy, id: 1
+      response.should redirect_to user_path(user)
     end
   end
 end

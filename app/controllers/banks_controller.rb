@@ -1,4 +1,5 @@
 class BanksController < ApplicationController
+  before_action :find_bank, only: [:show, :update, :destroy]
 
   def new
     @bank = Bank.new
@@ -15,12 +16,7 @@ class BanksController < ApplicationController
     end
   end
 
-  def show
-    @bank = Bank.find(params[:id])
-  end
-
   def update
-    @bank = Bank.find(params[:id])
     @bank.update(bank_params)
     if @bank.save
       flash[:success] = "Bank has been updated!"
@@ -31,9 +27,19 @@ class BanksController < ApplicationController
     end
   end
 
+  def destroy
+    @bank.delete
+    flash[:success] = "Bank has been deleted"
+    redirect_to user_path(current_user)
+  end
+
   private
 
   def bank_params
-    params.require(:bank).permit(:name)
+    params.require(:banks).permit(:name)
+  end
+
+  def find_bank
+    @bank = Bank.find(params[:id])
   end
 end

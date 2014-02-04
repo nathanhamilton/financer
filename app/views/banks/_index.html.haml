@@ -1,0 +1,13 @@
+#button
+= button_to 'Add a bank', new_bank_path
+.form
+  %ol
+    - @user.banks.each do |bank|
+      %li
+        Name:
+        = bank.name
+
+        = link_to 'Edit |', edit_bank_path(bank)
+        = link_to 'Delete', bank, method: :delete
+      %br/
+

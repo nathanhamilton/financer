@@ -1,0 +1,10 @@
+%h1 Add a bank account
+
+.form
+  %ul
+    = form_for :banks, url: banks_path do |f|
+      %li
+        = f.label :name
+        = f.text_field :name
+      %li
+        = f.submit 'Add bank'

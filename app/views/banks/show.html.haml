@@ -1,0 +1,14 @@
+- provide(:title, "#{@bank.name}")
+%h1
+  = @bank.name
+%p Welcome to your financer profile. Please feel free to modify your personal details.
+.users
+  %ol
+    %li
+      Name:
+      = @bank.name
+    %li
+      Email:
+      = @user.email
+    %br/
+    = link_to 'Edit my personal details', edit_user_path(@user)
