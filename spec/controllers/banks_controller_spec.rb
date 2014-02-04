@@ -34,7 +34,7 @@ describe BanksController do
   end
 
   describe "GET edit" do
-    let!(:bank) { FactoryGirl.create :bank, id: 1 }
+    let!(:bank) { FactoryGirl.create :bank }
 
     it "edits the bank" do
       get :edit, id: 1
@@ -43,7 +43,7 @@ describe BanksController do
   end
 
   describe "PUT update" do
-    let!(:bank) { FactoryGirl.create :bank, id: 1 }
+    let!(:bank) { FactoryGirl.create :bank }
 
     context "success" do
       it "should be successful" do
@@ -61,7 +61,7 @@ describe BanksController do
   end
 
   describe "DELETE destroy" do
-    let!(:bank) { FactoryGirl.create :bank, id: 1 }
+    let!(:bank) { FactoryGirl.create :bank }
 
     it "deletes the selected bank" do
       delete :destroy, id: 1
