@@ -1,5 +1,5 @@
 class BanksController < ApplicationController
-  before_action :find_bank, only: [:show, :update, :destroy]
+  before_action :find_bank, only: [:edit, :update, :destroy]
 
   def new
     @bank = Bank.new

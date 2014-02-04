@@ -34,16 +34,10 @@ describe BanksController do
   end
 
   describe "GET edit" do
+    let!(:bank) { FactoryGirl.create :bank, id: 1 }
+
     it "edits the bank" do
       get :edit, id: 1
-      response.should be_success
-    end
-  end
-
-  describe "GET show" do
-    let!(:bank) { FactoryGirl.create :bank, id: 1 }
-    it 'shows the banks for that user' do
-      get :show, id: 1
       response.should be_success
     end
   end
