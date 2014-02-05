@@ -32,7 +32,7 @@ describe EnvelopesController do
     context "success" do
       it "creates the envelope" do
         post :create, envelope: { category: 'Car', total: 30, bank_id: bank.id }
-        response.should redirect_to user_path(user)
+        response.should redirect_to dashboard_path
       end
     end
 
@@ -59,7 +59,7 @@ describe EnvelopesController do
     context "success" do
       it "redirects to user path" do
         put :update, id: envelope.id, envelope: { category: "home", total: 200, bank_id: bank.id }
-        response.should redirect_to user_path(user)
+        response.should redirect_to dashboard_path
       end
     end
 
@@ -76,7 +76,7 @@ describe EnvelopesController do
 
     it "changes the envelope count by 1" do
       delete :destroy, id: envelope.id
-      response.should redirect_to user_path(user)
+      response.should redirect_to dashboard_path
     end
   end
 end

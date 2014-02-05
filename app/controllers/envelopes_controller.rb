@@ -13,7 +13,7 @@ class EnvelopesController < ApplicationController
     @envelope = current_user.envelopes.build(envelope_params)
     if @envelope.save
       flash[:success] = 'Congratulations! Your envelope has been created!'
-      redirect_to user_path(current_user)
+      redirect_to dashboard_path
     else
       flash.now[:error] = @envelope.errors.full_messages.to_sentence
       render :new
@@ -23,7 +23,7 @@ class EnvelopesController < ApplicationController
   def update
     if envelope.update(envelope_params)
       flash[:success] = "Envelope was update"
-      redirect_to user_path(current_user)
+      redirect_to dashboard_path
     else
       flash.now[:error] = envelope.errors.full_messages.to_sentence
       render :edit
@@ -33,7 +33,7 @@ class EnvelopesController < ApplicationController
   def destroy
     envelope.destroy
     flash[:success] = "Envelope deleted"
-    redirect_to user_path(current_user)
+    redirect_to dashboard_path
   end
 
   private

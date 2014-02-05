@@ -9,7 +9,7 @@ class BanksController < ApplicationController
     bank = current_user.banks.build(bank_params)
     if bank.save
       flash[:success] = "Bank Created!"
-      redirect_to user_path(current_user)
+      redirect_to dashboard_path
     else
       flash.now[:error] = bank.errors.full_messages.to_sentence
       render :new
@@ -20,7 +20,7 @@ class BanksController < ApplicationController
     bank.update(bank_params)
     if bank.save
       flash[:success] = "Bank has been updated!"
-      redirect_to user_path(current_user)
+      redirect_to dashboard_path
     else
       flash.now[:error] = bank.errors.full_messages.to_sentence
       render :edit
@@ -30,7 +30,7 @@ class BanksController < ApplicationController
   def destroy
     bank.delete
     flash[:success] = "Bank has been deleted"
-    redirect_to user_path(current_user)
+    redirect_to dashboard_path
   end
 
   private
