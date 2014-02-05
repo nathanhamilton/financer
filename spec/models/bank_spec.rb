@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Bank do
-  let!(:user) { FactoryGirl.create :user, id: 1 }
+  let!(:user) { FactoryGirl.create :user }
 
   before do
     @bank = user.banks.build(name: "Security Test Bank")

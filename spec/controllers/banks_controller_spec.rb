@@ -20,14 +20,14 @@ describe BanksController do
 
     context "success" do
       it "redirects to the user page" do
-        get :create, banks: { name: "TLC Bank" }
-        response.should redirect_to user_path(user)
+        get :create, bank: { name: "TLC Bank" }
+        response.should redirect_to dashboard_path
       end
     end
 
     context "failure" do
       it "renders the new page" do
-        get :create, banks: { name: "" }
+        get :create, bank: { name: "" }
         response.should render_template :new
       end
     end
@@ -47,14 +47,14 @@ describe BanksController do
 
     context "success" do
       it "should be successful" do
-        put :update, id: bank.id, banks: { name: "Legacy Bank" }
-        response.should redirect_to user_path(user)
+        put :update, id: bank.id, bank: { name: "Legacy Bank" }
+        response.should redirect_to dashboard_path
       end
     end
 
     context "failure" do
       it "should render the edit page" do
-        put :update, id: bank.id, banks: { name: "" }
+        put :update, id: bank.id, bank: { name: "" }
         response.should render_template :edit
       end
     end
@@ -65,7 +65,7 @@ describe BanksController do
 
     it "deletes the selected bank" do
       delete :destroy, id: bank.id
-      response.should redirect_to user_path(user)
+      response.should redirect_to dashboard_path
     end
   end
 end

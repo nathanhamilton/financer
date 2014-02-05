@@ -12,5 +12,12 @@ FactoryGirl.define do
 
   factory :bank do
     name "Security Test Bank"
+    user_id 1
+  end
+
+  factory :envelope do
+    category 'car'
+    total    20
+    bank_id 1
   end
 end

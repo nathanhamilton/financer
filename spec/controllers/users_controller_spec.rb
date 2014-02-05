@@ -71,7 +71,7 @@ describe UsersController do
     let!(:user) { FactoryGirl.create :user, id: 1 }
     it "should delete the user" do
       delete :destroy, id: 1
-      response.should redirect_to users_path
+      response.should redirect_to dashboard_path
     end
   end
 end

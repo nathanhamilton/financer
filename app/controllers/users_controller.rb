@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     if @user.save
       sign_in @user
       flash[:success] = "Welcome to financer!"
-      redirect_to user_path(@user)
+      redirect_to dashboard_path
     else
       flash[:error] = @user.errors.full_messages.to_sentence
       render :new
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
   def update
     if @user.update(user_params)
       flash[:success] = "Your information was successfully saved"
-      redirect_to user_path(@user)
+      redirect_to dashboard_path
     else
       flash[:error] = @user.errors.full_messages.to_sentence
       render :edit
@@ -38,7 +38,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     flash[:success] = "User has been deleted"
-    redirect_to users_path
+    redirect_to dashboard_path
   end
 
   private
