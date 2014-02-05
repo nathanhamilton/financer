@@ -1,0 +1,14 @@
+.form
+  %ul
+    = form_for @envelope do |f|
+      %li
+        = f.label :category
+        = f.text_field :category
+      %li
+        = f.label :total
+        = f.text_field :total
+      %li
+        = f.label :bank_id
+        = f.text_field :bank_id
+      %li
+        = f.submit

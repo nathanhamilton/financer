@@ -3,4 +3,5 @@ class Envelope < ActiveRecord::Base
 
   validates :category, presence: true
   validates :total, presence: true
+  validates :bank_id, presence: true
 end

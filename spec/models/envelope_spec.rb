@@ -5,7 +5,7 @@ describe Envelope do
   let!(:bank) { FactoryGirl.create :bank }
 
   before do
-    @envelope = user.envelopes.build(category: 'Car', total: 200, bank_id: 1)
+    @envelope = user.envelopes.build(category: 'Car', total: 200, bank_id: bank.id)
   end
 
   subject { @envelope }
