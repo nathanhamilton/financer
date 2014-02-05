@@ -1,7 +1,5 @@
 class Envelope < ActiveRecord::Base
   belongs_to :bank
 
-  validates :category, presence: true
-  validates :total, presence: true
-  validates :bank_id, presence: true
+  validates_presence_of :bank_id, :category, :total
 end
