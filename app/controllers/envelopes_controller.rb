@@ -1,5 +1,6 @@
 class EnvelopesController < ApplicationController
   before_filter :envelope, only: :edit
+  before_filter :banks, only: [:new, :edit]
 
   def index
     @envelopes = current_user.envelopes
@@ -44,5 +45,9 @@ class EnvelopesController < ApplicationController
 
   def envelope
     @envelope ||= Envelope.find(params[:id])
+  end
+
+  def banks
+    @banks = current_user.banks
   end
 end

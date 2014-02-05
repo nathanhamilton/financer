@@ -1,7 +1,6 @@
 - provide(:title, "Dashboard")
 %h1 Dashboard
-.buttons
-  =link_to 'Add new Envelope', new_envelope_path
+=link_to 'Add new Envelope', new_envelope_path, class: 'button'
 .envelopes
   %ol
   - @envelopes.each do |envelope|

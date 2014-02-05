@@ -9,6 +9,6 @@
         = f.text_field :total
       %li
         = f.label :bank_id
-        = f.text_field :bank_id
+        = collection_select(:envelope, :bank_id, current_user.banks, :id, :name )
       %li
         = f.submit
