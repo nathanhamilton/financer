@@ -1,4 +1,5 @@
 class BanksController < ApplicationController
+  before_action :signed_in_user, except: [:new, :create]
   before_action :bank, only: :edit
 
   def new

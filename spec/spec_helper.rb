@@ -43,3 +43,9 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 end
+
+def skip_sign_in
+  ApplicationController.tap do |controller|
+    controller.skip_before_action :signed_in_user
+  end
+end

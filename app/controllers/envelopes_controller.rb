@@ -1,4 +1,5 @@
 class EnvelopesController < ApplicationController
+  before_action :signed_in_user, except: [:new, :create]
   before_filter :envelope, only: :edit
   before_filter :banks, only: [:new, :edit]
 
