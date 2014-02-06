@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe UsersController do
 
+  before { skip_sign_in }
+
   describe "GET index" do
     it "should show all the users" do
       get :index
@@ -51,6 +53,7 @@ describe UsersController do
 
   describe "PUT update" do
     let!(:user) { FactoryGirl.create :user, id: 1 }
+
     context "success" do
       it "should redirect to the users profile" do
         put :update, id: 1, user: {name: "Foo", email: "test@example.com"}

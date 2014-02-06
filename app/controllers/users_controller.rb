@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :signed_in_user, except: [:new, :create]
   before_action :find_user, except: [:index, :new, :create]
 
   def index
