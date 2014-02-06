@@ -32,7 +32,7 @@ module SessionsHelper
   end
 
   def redirect_back_or(default)
-    return_path = sessions.delete[:return_to] || default
+    return_path = session.delete(:return_to) || default
     redirect_to return_path
   end
 
