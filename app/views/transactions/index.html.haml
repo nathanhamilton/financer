@@ -1,0 +1,20 @@
+- provide(:title, "Transaction")
+%h1 Transactions
+=link_to 'Add new Envelope', new_envelope_path, class: 'button'
+.envelopes
+  %ol
+  - @transactions.each do |transaction|
+    %li
+      Name:
+      = transaction.name
+    %li
+      Bank name:
+      = envelope.bank.name
+    %li
+      Amount:
+      = number_to_currency(envelope.total)
+    %li
+      = link_to 'Edit |', edit_envelope_path(envelope)
+      = link_to 'Delete', envelope_path(envelope), method: :delete
+    %br/
+
