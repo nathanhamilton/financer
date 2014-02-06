@@ -11,7 +11,7 @@ FactoryGirl.define do
   end
 
   factory :bank do
-    name "Security Test Bank"
+    name 'Security Test Bank'
     user_id 1
   end
 
@@ -19,5 +19,12 @@ FactoryGirl.define do
     category 'car'
     total    20
     bank_id 1
+  end
+
+  factory :transaction do
+    name 'Wallbreans shopping'
+    transaction_type 'Credit'
+    date Time.now
+    amount 350.40
   end
 end

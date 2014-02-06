@@ -3,6 +3,7 @@ Financer::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :banks, except: [:index, :show]
   resources :envelopes
+  resources :transactions
 
   root to: 'static_pages#home'
 

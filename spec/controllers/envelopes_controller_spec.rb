@@ -7,7 +7,7 @@ describe EnvelopesController do
   before do
     controller.stub(:current_user).and_return user
     ApplicationController.tap do |controller|
-      controller.skip_before_filter :force_login
+      controller.skip_before_filter :signed_in_user
     end
   end
 
