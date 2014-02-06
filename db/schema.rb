@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140205211436) do
+ActiveRecord::Schema.define(version: 20140206193423) do
 
   create_table "banks", force: true do |t|
     t.string   "name"
@@ -32,6 +32,17 @@ ActiveRecord::Schema.define(version: 20140205211436) do
   end
 
   add_index "envelopes", ["bank_id"], name: "index_envelopes_on_bank_id"
+
+  create_table "transactions", force: true do |t|
+    t.string   "name"
+    t.string   "transaction_type"
+    t.date     "date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.decimal  "amount",           precision: 11, scale: 2
+    t.integer  "user_id"
+    t.integer  "envelope_id"
+  end
 
   create_table "users", force: true do |t|
     t.string   "name"

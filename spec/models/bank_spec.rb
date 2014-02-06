@@ -8,9 +8,13 @@ describe Bank do
   end
 
   subject { @bank }
-  it { should respond_to(:name) }
-  it { should respond_to(:user_id) }
-  it { should respond_to(:user) }
+  it { should respond_to :name }
+  it { should respond_to :user_id }
+  it { should respond_to :user }
+  it { should respond_to :transaction }
+  it { should belong_to :user }
+  it { should have_many :envelopes }
+  it { should have_many(:transactions).through(:envelopes) }
   its(:user) { should == user }
 
   it { should be_valid }

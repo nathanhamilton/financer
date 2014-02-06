@@ -15,7 +15,11 @@ describe User do
   it { should respond_to :remember_token }
   it { should respond_to :authenticate }
   it { should respond_to :banks }
+  it { should respond_to :envelopes }
+  it { should respond_to :transactions }
+  it { should have_many :banks }
   it { should have_many(:envelopes).through(:banks) }
+  it { should have_many :transactions }
 
 
   it { should be_valid }
