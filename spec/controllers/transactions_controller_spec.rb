@@ -32,7 +32,7 @@ describe TransactionsController do
   describe 'POST create' do
 
     context 'success' do
-      it 'should redirect to the envelope path' do
+      it 'should redirect to the envelopes path' do
         post :create, transaction: { name: 'Test mart',
                                      transaction_type: 'Check',
                                      date: Time.now,
@@ -52,6 +52,44 @@ describe TransactionsController do
                                      user_id: nil}
         response.should render_template :new
       end
+    end
+  end
+
+  describe "GET edit" do
+    let!(:transaction) { FactoryGirl.create :transaction, envelope_id: envelope.id,
+                                                          user_id: user.id }
+
+    it "edits the transaction" do
+      get :edit, id: transaction.id
+      response.should be_success
+    end
+  end
+
+  describe "PUT update" do
+    let!(:transaction) { FactoryGirl.create :transaction, envelope_id: envelope.id,
+                                                          user_id: user.id }
+
+    context 'success' do
+      it "redirects to the envelopes path" do
+        put :update, id: transaction.id, transaction: {name: 'New Grocery'}
+        response.should redirect_to envelopes_path
+      end
+    end
+
+    context 'failure' do
+      it "renders the edit path" do
+        put :update, id: transaction.id, transaction: {name: ''}
+        response.should render_template :edit
+      end
+    end
+  end
+
+  describe "DELETE destroy" do
+    let!(:transaction) { FactoryGirl.create :transaction, envelope_id: envelope.id,
+                                                          user_id: user.id }
+    it "redirects to the envelope path" do
+      delete :destroy, id: transaction.id
+      response.should redirect_to envelopes_path
     end
   end
 end
