@@ -12,7 +12,7 @@
       = transaction.transaction_type
     %li
       Date:
-      = transaction.date
+      = transaction.date.to_formatted_s(:long)
     %li
       Amount:
       = number_to_currency(transaction.amount)

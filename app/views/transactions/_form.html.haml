@@ -6,11 +6,11 @@
         = f.text_field :name
       %li
         = f.label :transaction_type
-        = f.text_field :transaction_type
+        = select("transaction", "transaction_type", TransactionType.all.map { |t| t.name } )
       %li
         = f.label :date
         = f.date_select :date, order: [:month, :day, :year], default: Time.zone.now.to_date
-        %li
+      %li
         = f.label :amount
         = f.number_field :amount, step: 0.02
       %li

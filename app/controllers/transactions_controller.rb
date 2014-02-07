@@ -41,15 +41,15 @@ class TransactionsController < ApplicationController
 
   private
 
-  def transaction_params
-    params.require(:transaction).permit(:name, :transaction_type, :date, :amount, :user_id, :envelope_id)
+  def envelope
+    @envelope ||= Envelope.find(params[:envelope_id])
   end
 
   def transaction
     @transaction ||= Transaction.find(params[:id])
   end
 
-  def envelope
-    @envelope ||= Envelope.find(params[:envelope_id])
+  def transaction_params
+    params.require(:transaction).permit(:name, :transaction_type, :date, :amount, :user_id, :envelope_id)
   end
 end
