@@ -1,6 +1,7 @@
 class TransactionsController < ApplicationController
   before_action :signed_in_user
   before_filter :transaction, only: :edit
+  before_filter :envelope, only: [:new, :edit]
 
   def index
     @transactions = envelope.transactions
@@ -12,9 +13,10 @@ class TransactionsController < ApplicationController
 
   def create
     @transaction = envelope.transactions.build(transaction_params)
+    @transaction.user_id = current_user.id
     if @transaction.save
       flash[:success] = 'Transaction created'
-      redirect_to envelopes_path
+      redirect_to envelope_transactions_path(envelope)
     else
       flash.now[:error] = @transaction.errors.full_messages.to_sentence
       render :new
@@ -24,7 +26,7 @@ class TransactionsController < ApplicationController
   def update
     if transaction.update(transaction_params)
       flash[:success] = 'Transaction updated'
-      redirect_to envelopes_path
+      redirect_to envelope_transactions_path(envelope)
     else
       flash[:error] = transaction.errors.full_messages.to_sentence
       render :edit
@@ -34,7 +36,7 @@ class TransactionsController < ApplicationController
   def destroy
     transaction.destroy
     flash[:success] = "Transaction deleted"
-    redirect_to envelopes_path
+    redirect_to envelope_transactions_path(envelope)
   end
 
   private
@@ -44,6 +46,10 @@ class TransactionsController < ApplicationController
   end
 
   def transaction
-    @envelope ||= Transaction.find(params[:id])
+    @transaction ||= Transaction.find(params[:id])
+  end
+
+  def envelope
+    @envelope ||= Envelope.find(params[:envelope_id])
   end
 end

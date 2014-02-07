@@ -1,17 +1,14 @@
 .form
   %ul
-    = form_for @transaction do |f|
+    = form_for @envelope do |f|
       %li
-        = f.label :name
-        = f.text_field :name
+        = f.label :category
+        = f.text_field :category
       %li
-        = f.label :transaction_type
-        = f.text_field :transaction_type
-      %li
-        = f.label :date
-        = f.date_select(:date, default: {Time.now})
+        = f.label :total
+        = f.text_field :total
       %li
         = f.label :bank_id
-        = collection_select(:transaction, :envelope_id, current_user.envelopes, :id, :category )
+        = collection_select(:envelope, :bank_id, current_user.banks, :id, :name )
       %li
         = f.submit
