@@ -18,6 +18,6 @@
       = number_to_currency(transaction.amount)
     %li
       = link_to 'Edit |', edit_envelope_transaction_path(id: transaction.id)
-      = link_to 'Delete', envelope_transaction_path(id: transaction.id), method: :delete
+      = link_to 'Delete', envelope_transaction_path(id: transaction.id), method: :delete, confirm: "Are you sure?"
     %br/
 

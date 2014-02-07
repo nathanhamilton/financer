@@ -16,6 +16,6 @@
     %li
       = link_to 'View Transactions |', envelope_transactions_path(envelope)
       = link_to 'Edit |', edit_envelope_path(envelope)
-      = link_to 'Delete', envelope_path(envelope), method: :delete
+      = link_to 'Delete', envelope_path(envelope), method: :delete, confirm: "Are you sure?"
     %br/
 
