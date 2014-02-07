@@ -1,6 +1,8 @@
 - provide(:title, "Transaction")
-%h1 Transactions
-=link_to 'Add Transaction', new_envelope_transaction_path, class: 'button'
+%h1 #{@envelope.category}'s Transactions
+.back_button
+  = link_to 'Back', dashboard_path
+= link_to 'Add Transaction', new_envelope_transaction_path, class: 'button'
 .envelopes
   %ol
   - @transactions.each do |transaction|

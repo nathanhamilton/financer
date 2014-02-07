@@ -2,4 +2,6 @@
 %h1.header_style
   = @user.name
 %p Change your user information
+.back_button
+  = link_to 'Back', user_path(current_user)
 = render "form"

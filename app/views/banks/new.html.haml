@@ -1,3 +1,5 @@
 - provide(:title, "New Bank")
 %h1 Add a bank account
+.back_button
+  = link_to 'Back', user_path(current_user)
 = render "form"

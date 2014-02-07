@@ -1,3 +1,5 @@
 - provide(:title, "#{@bank.name}")
 %h1 Edit #{@bank.name}
+.back_button
+  = link_to 'Back', user_path(current_user)
 = render "form"
