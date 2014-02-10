@@ -1,3 +1,5 @@
 - provide(:title, "Edit #{@envelope.category}")
 %p Edit Envelope
+.back_button
+  = link_to 'Back', dashboard_path
 = render "form"

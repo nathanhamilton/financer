@@ -8,6 +8,6 @@
         = bank.name
 
         = link_to 'Edit |', edit_bank_path(bank)
-        = link_to 'Delete', bank, method: :delete
+        = link_to 'Delete', bank, method: :delete, data: { confirm: 'Are you sure?' }
       %br/
 

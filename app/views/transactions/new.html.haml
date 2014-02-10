@@ -1,0 +1,5 @@
+- provide(:title, "New Transaction")
+%p New Transaction for Envelope: #{@envelope.category}
+.back_button
+  = link_to 'Back', dashboard_path
+= render 'form'

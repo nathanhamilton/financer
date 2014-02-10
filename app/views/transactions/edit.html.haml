@@ -1,0 +1,5 @@
+- provide(:title, "Edit #{@transaction.name}")
+%p Edit Transaction for Envelope: #{@envelope.category}
+.back_button
+  = link_to 'Back', dashboard_path
+= render 'form'

@@ -1,0 +1,25 @@
+- provide(:title, "Transaction")
+%h1 #{@envelope.category}'s Transactions
+.back_button
+  = link_to 'Back', dashboard_path
+= link_to 'Add Transaction', new_envelope_transaction_path, class: 'button'
+.envelopes
+  %ol
+  - @transactions.each do |transaction|
+    %li
+      Name:
+      = transaction.name
+    %li
+      Transaction Type:
+      = transaction.transaction_type
+    %li
+      Date:
+      = transaction.date.to_formatted_s(:long)
+    %li
+      Amount:
+      = number_to_currency(transaction.amount)
+    %li
+      = link_to 'Edit |', edit_envelope_transaction_path(id: transaction.id)
+      = link_to 'Delete', envelope_transaction_path(id: transaction.id), method: :delete, confirm: "Are you sure?"
+    %br/
+

@@ -11,9 +11,11 @@ describe Envelope do
   subject { @envelope }
 
   it { should respond_to :bank }
-  it { should belong_to :bank }
   it { should respond_to :category }
   it { should respond_to :total }
+  it { should respond_to :transaction }
+  it { should belong_to :bank }
+  it { should have_many :transactions }
 
   its(:bank) { should == bank }
 
