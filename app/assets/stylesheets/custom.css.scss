@@ -100,6 +100,44 @@ li {
   color: #fff;
   text-shadow: 0 0 20px #28B024;
 }
+/* envelopes */
+
+.envelopes {
+  margin: 10px 10px 10px 10px;
+}
+
+.envelope {
+  width: 200px;
+  height: 60px;
+  background-color: rgba(9,133,7, .2);
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px #027100 solid;
+  border-radius: 7px;
+  li {
+    font-size: 13px;
+  }
+}
+
+#category {
+  float: left;
+  clear: right;
+  font-size: 18px;
+  margin: 5px 5px 5px 5px;
+}
+
+#amount {
+  float: right;
+  clear: left;
+  margin: -28px 5px 10px 0;
+  font-size: 20px;
+}
+
+#options {
+  margin: 5px 0 5px 0;
+  clear: right;
+}
+
 
 /* transactions */
 
