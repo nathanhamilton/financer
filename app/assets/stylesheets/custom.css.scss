@@ -37,7 +37,6 @@ li {
   }
 }
 
-
 /* miscellaneous */
 
 .debug_dump {
@@ -100,6 +99,27 @@ li {
 #logo:hover {
   color: #fff;
   text-shadow: 0 0 20px #28B024;
+}
+
+/* transactions */
+
+table {
+  width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  overflow: auto;
+  border-spacing: 1px;
+  border: 2px #40991C solid;
+}
+
+table td {
+  width: 161px;
+}
+
+tbody {
+  background-color: #D8DBD7
 }
 
 /* footer */
