@@ -12,7 +12,7 @@ class TransactionsController < ApplicationController
   end
 
   def create
-    @transaction = envelope.transactions.build(transaction_params)
+    @transaction = envelope.transactions.new(transaction_params)
     @transaction.user_id = current_user.id
     if @transaction.save
       flash[:success] = 'Transaction created'
