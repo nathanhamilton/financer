@@ -12,5 +12,6 @@
       = @user.email
     %br/
     = link_to 'Edit my personal details', edit_user_path(@user)
-%h3 Banks
-= render "banks/index"
+.banks
+  %h3 Banks
+  = render "banks/index"

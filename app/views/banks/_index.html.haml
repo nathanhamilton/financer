@@ -1,6 +1,6 @@
 #button
-= link_to 'Add a bank', new_bank_path
-.form
+  = link_to 'Add a bank', new_bank_path
+.form#form
   %ol
     - @user.banks.each do |bank|
       %li

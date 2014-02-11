@@ -1,5 +1,5 @@
 .form
-  %ul
+  %ul#form
     = form_for [@envelope, @transaction] do |f|
       %li
         = f.label :name
@@ -14,4 +14,4 @@
         = f.label :amount
         = f.number_field :amount, step: 0.02
       %li
-        = f.submit
+        = f.submit class: 'submit'

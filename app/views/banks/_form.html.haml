@@ -1,8 +1,9 @@
 .form
-  %ul
+  %ul#form
     = form_for @bank do |f|
       %li
         = f.label :name
         = f.text_field :name
       %li
-        = f.submit
+        = f.submit class: "submit"
+

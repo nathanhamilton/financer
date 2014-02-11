@@ -1,5 +1,5 @@
 .form
-  %ul
+  %ul#form
     = form_for @user do |f|
       %li
         = f.label :name
@@ -14,4 +14,4 @@
         = f.label :password_confirmation
         = f.password_field :password_confirmation
       %li
-        = f.submit
+        = f.submit class: "submit"

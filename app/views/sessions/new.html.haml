@@ -1,7 +1,7 @@
 - provide(:title, "Sign in")
 %h1 Sign in to financer
 .form
-  %ul
+  %ul#form
     = form_for :session, url: sessions_path do |f|
       %li
         = f.label :email
@@ -10,7 +10,7 @@
         = f.label :password
         = f.password_field :password
       %li
-        = f.submit 'Sign in'
+        = f.submit 'Sign in', class: "submit"
 %p
   Don't have an account?
   = link_to 'Signup', signup_path
