@@ -63,4 +63,56 @@ describe Transaction do
     before { @transaction.transaction_type = ''}
     it { should_not be_valid }
   end
+
+  describe ".transaction_type_object" do
+    before { @transaction.transaction_type_object }
+
+    it "returns the transaction type object" do
+      type = TransactionType.find_by_name(@transaction.transaction_type)
+      type.name.should == 'Credit'
+    end
+  end
+
+  describe ".check_transaction_type" do
+
+    context "Debit" do
+
+      before { @transaction.transaction_type = "Debit" }
+      before { @transaction.check_transaction_type }
+
+      it "should prepend - to amount if object.negative? == true" do
+        @transaction.amount.to_f.should == -400.30
+      end
+    end
+
+    context "Credit" do
+
+      before { @transaction.transaction_type = "Credit" }
+      before { @transaction.check_transaction_type }
+
+      it "should prepend - to amount if object.negative? == true" do
+        @transaction.amount.to_f.should == -400.30
+      end
+    end
+
+    context "Check" do
+
+      before { @transaction.transaction_type = "Check" }
+      before { @transaction.check_transaction_type }
+
+      it "should prepend - to amount if object.negative? == true" do
+        @transaction.amount.to_f.should == -400.30
+      end
+    end
+
+    context "Income" do
+
+      before { @transaction.transaction_type = "Income" }
+      before { @transaction.check_transaction_type }
+
+      it "should not prepend - to amount if object.negative? == true" do
+        @transaction.amount.to_f.should_not == -400.30
+      end
+    end
+  end
 end
