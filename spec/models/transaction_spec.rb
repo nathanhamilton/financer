@@ -77,8 +77,10 @@ describe Transaction do
 
     context "Debit" do
 
-      before { @transaction.transaction_type = "Debit" }
-      before { @transaction.check_transaction_type }
+      before do
+        @transaction.transaction_type = "Debit"
+        @transaction.check_transaction_type
+      end
 
       it "should prepend - to amount if object.negative? == true" do
         @transaction.amount.to_f.should == -400.30
@@ -87,8 +89,10 @@ describe Transaction do
 
     context "Credit" do
 
-      before { @transaction.transaction_type = "Credit" }
-      before { @transaction.check_transaction_type }
+      before do
+        @transaction.transaction_type = "Credit"
+        @transaction.check_transaction_type
+      end
 
       it "should prepend - to amount if object.negative? == true" do
         @transaction.amount.to_f.should == -400.30
@@ -97,8 +101,10 @@ describe Transaction do
 
     context "Check" do
 
-      before { @transaction.transaction_type = "Check" }
-      before { @transaction.check_transaction_type }
+      before do
+        @transaction.transaction_type = "Check"
+        @transaction.check_transaction_type
+      end
 
       it "should prepend - to amount if object.negative? == true" do
         @transaction.amount.to_f.should == -400.30
@@ -107,8 +113,10 @@ describe Transaction do
 
     context "Income" do
 
-      before { @transaction.transaction_type = "Income" }
-      before { @transaction.check_transaction_type }
+      before do
+        @transaction.transaction_type = "Income"
+        @transaction.check_transaction_type
+      end
 
       it "should not prepend - to amount if object.negative? == true" do
         @transaction.amount.to_f.should_not == -400.30
