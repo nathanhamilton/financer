@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       flash[:success] = "Welcome to financer!"
       redirect_to dashboard_path
     else
-      flash[:error] = @user.errors.full_messages.to_sentence
+      flash.now[:error] = @user.errors.full_messages.to_sentence
       render :new
     end
   end
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
       flash[:success] = "Your information was successfully saved"
       redirect_to dashboard_path
     else
-      flash[:error] = @user.errors.full_messages.to_sentence
+      flash.now[:error] = @user.errors.full_messages.to_sentence
       render :edit
     end
   end
