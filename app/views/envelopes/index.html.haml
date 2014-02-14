@@ -14,3 +14,5 @@
         = link_to 'Edit |', edit_envelope_path(envelope)
         = link_to 'Delete', envelope_path(envelope), method: :delete, data: { confirm: 'Are you sure?' }
       %br/
+.total
+  = number_to_currency(current_user.transactions.sum('amount'))
