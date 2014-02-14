@@ -1,13 +1,11 @@
 #button
   = link_to 'Add a bank', new_bank_path
-.form#form
-  %ol
-    - @user.banks.each do |bank|
-      %li
-        Name:
-        = bank.name
 
-        = link_to 'Edit |', edit_bank_path(bank)
-        = link_to 'Delete', bank, method: :delete, data: { confirm: 'Are you sure?' }
-      %br/
+%ol
+  - @user.banks.each do |bank|
+    %li
+      Name:
+      = bank.name
+      = link_to 'Edit |', edit_bank_path(bank)
+      = link_to 'Delete', bank, method: :delete, data: { confirm: 'Are you sure?' }
 

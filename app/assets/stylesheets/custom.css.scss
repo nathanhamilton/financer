@@ -30,6 +30,28 @@ li {
   text-align: left;
 }
 
+#button {
+  background-color: #68b12f;
+  width: 120px;
+  border: 1px solid #108211;
+  border-bottom: 1px solid #108211;
+  border-radius: 3px;
+  box-shadow: 0px 3px 9px black;
+  margin-left: 62.5px;
+  margin-bottom: 10px;
+  a {
+    color: black;
+  }
+}
+
+#button:hover{
+  opacity: .9;
+}
+
+.content {
+  overflow: hidden;
+}
+
 /* miscellaneous */
 
 .debug_dump {
@@ -128,13 +150,21 @@ li {
 /* banks */
 
 .banks {
+  min-width: 250px;
   float: right;
-  clear: right;
-  background-color: orange;
-  margin-top: -30px;
+  clear: left;
+  margin: -80px 40px 20px 0;
+  background-color: #C4C3C3;
+  h3 {
+    margin: 10px 0 10px 0;
+  }
   ol {
     padding: 0px;
     margin: 0;
+    text-align: left;
+    li {
+      padding: 10px 5px 10px 10px;
+    }
   }
 }
 
