@@ -30,9 +30,4 @@ describe Envelope do
     before { @envelope.bank_id = nil }
     it { should_not be_valid }
   end
-
-  describe "When no total is given" do
-    before { @envelope.total = nil }
-    it { should_not be_valid }
-  end
 end

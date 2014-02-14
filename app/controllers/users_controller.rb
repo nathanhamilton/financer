@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :signed_in_user, except: [:new, :create]
-  before_action :find_user, except: [:index, :new, :create]
+  skip_before_action :signed_in_user, only: [:new, :create]
+  before_action :user, except: [:index, :new, :create]
 
   def index
     @users = User.all
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update(user_params)
+    if user.update(user_params)
       flash[:success] = "Your information was successfully saved"
       redirect_to dashboard_path
     else
@@ -37,9 +37,9 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy
+    user.destroy unless user == current_user
     flash[:success] = "User has been deleted"
-    redirect_to dashboard_path
+    redirect_to root_path
   end
 
   private
@@ -48,7 +48,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(:email, :name, :password, :password_confirmation)
   end
 
-  def find_user
-    @user = User.find(params[:id])
+  def user
+    @user ||= User.find(params[:id])
   end
 end

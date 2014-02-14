@@ -72,6 +72,10 @@ li {
 
 /* form */
 
+input:focus {
+  outline: none;
+}
+
 .form {
   label {
     width: 150px;
@@ -203,18 +207,22 @@ li {
 }
 
 
-/* envelopes */
+/* dashboard */
 
 .envelopes {
   margin: 10px;
 }
 
 .envelope {
-  width: 200px;
-  height: 60px;
-  background-color: rgba(9,133,7, .2);
   margin-left: auto;
   margin-right: auto;
+  clear: both;
+}
+
+.box {
+  width: 200px;
+  min-height: 60px;
+  background-color: rgba(9,133,7, .2);
   border: 2px #027100 solid;
   border-radius: 7px;
   li {
@@ -226,17 +234,51 @@ li {
     font-size: 18px;
     margin: 5px;
   }
-
   .amount {
     float: right;
     clear: left;
     margin: -28px 5px 10px 0;
     font-size: 20px;
   }
-
   .options {
     margin: 5px 0 5px 0;
     clear: right;
+  }
+}
+
+.totals {
+  min-width: 250px;
+  float: right;
+  clear: both;
+  margin-top: 10px;
+  p {
+    text-align: center;
+    margin: -31px 0 0 0;
+  }
+}
+
+.total {
+  .amount {
+    margin: 19px 5px 0 0;
+  }
+}
+
+.box.bank_totals {
+  min-height: 230px;
+  margin: 15px 0 10px 0;
+  clear: left;
+  ol {
+    margin: 0;
+    padding: 0;
+  }
+  .name {
+    font-size: 18px;
+    padding-top: 15px;
+    clear: both;
+  }
+  .amount {
+    margin: 10px 5px 0 5px;
+    font-size: 20px;
   }
 }
 

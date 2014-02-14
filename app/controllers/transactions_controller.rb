@@ -1,7 +1,6 @@
 class TransactionsController < ApplicationController
-  before_action :signed_in_user
-  before_filter :transaction, only: :edit
-  before_filter :envelope, only: [:new, :edit]
+  before_action :transaction, only: :edit
+  before_action :envelope, only: [:new, :edit]
 
   def index
     @transactions = envelope.transactions

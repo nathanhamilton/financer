@@ -24,5 +24,5 @@
           = number_to_currency(transaction.amount)
         %td
           = link_to 'Edit |', edit_envelope_transaction_path(id: transaction.id)
-          = link_to 'Delete', envelope_transaction_path(id: transaction.id), method: :delete, confirm: "Are you sure?"
+          = link_to 'Delete', envelope_transaction_path(id: transaction.id), method: :delete, data: { confirm: "Are you sure?" }
 
