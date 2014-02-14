@@ -73,10 +73,6 @@ li {
 
 /* form */
 
-#form {
-  text-align: left;
-}
-
 .form {
   label {
     width: 150px;
@@ -91,6 +87,7 @@ li {
     padding: 5px 8px;
   }
   ul {
+    text-align: left;
     width: 750px;
     list-style-type: none;
     list-style-position: outside;
