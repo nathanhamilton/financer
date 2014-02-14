@@ -30,7 +30,7 @@ li {
   text-align: left;
 }
 
-#button {
+.button {
   background-color: #68b12f;
   width: 120px;
   border: 1px solid #108211;
@@ -42,11 +42,11 @@ li {
   a {
     color: black;
   }
+  &:hover{
+    opacity: .9;
+  }
 }
 
-#button:hover{
-  opacity: .9;
-}
 
 .content {
   overflow: hidden;
@@ -72,79 +72,74 @@ li {
 }
 
 /* form */
-*:focus {outline: none;}
 
 #form {
   text-align: left;
 }
 
-.form label {
-  width: 150px;
-  margin-top: 3px;
-  display:inline-block;
-  float: left;
-  padding: 3px;
-}
-
-.form input {
-  height: 20px;
-  width: 220px;
-  padding: 5px 8px;
-}
-
-.form ul {
-  width: 750px;
-  list-style-type: none;
-  list-style-position: outside;
-  margin: 0px;
-  padding: 0px;
-}
-
-.form li {
-  padding: 12px;
-  position: relative;
-}
-
-.form .submit {
-  background-color: #68b12f;
-  background: -webkit-gradient(linear, left to, left bottom, from(#68b12f), to(#50911e));
-  background: -webkit-linear-gradient(top, #68b12f, #50911e);
-  background: -moz-linear-gradient(top, #68b12f, #50911e);
-  background: -ms-linear-gradient(top, #68b12f, #50911e);
-  background: -o-linear-gradient(top, #68b12f, #50911e);
-  background: linear-gradient(top, #68b12f, #50911e);
-  border: 1px solid #5b992b;
-  border-bottom: 1px solid #5b992b;
-  border-radius: 3px;
-  -webkit-border-radis: 3px;
-  -moz-border-radius: 3px;
-  -ms-border-radius: 3px;
-  -o-border-radius: 3px;
-  bord-shadow: inset 0 1px 0 0 #9fd574;
-  -webkit-box-shadow: 0 1px 0 0 #9fd574 inset;
-  -moz-box-shadow: 0 1px 0 0 #9fd574 inset;
-  -ms-box-shadow: 0 1px 0 0 #9fd574 inset;
-  color: white;
-  font-weight: bold;
-  padding: 6px 20px;
-  text-align: center;
-  text-shadow: 0 -1px 0 #396715;
-  height: 30px;
-  text-align: none;
-}
-
-.submit:hover {
-  opacity: .85;
-  cursor: pointer;
-}
-
-.submit:active {
-  border: 1px solid #20911e;
-  box-shadow: 0 0 10px 5px #356b0b inset;
-  -webkit-box-shadow: 0 0 10px 5px #356b0b inset;
-  -moz-box-shadow: 0 0 10px 5px #356b0b inset;
-  -ms-box-shadow: 0 0 10px 5px #356b0b inset;
-  -o-box-shadow: 0 0 10px 5px #356b0b inset;
+.form {
+  label {
+    width: 150px;
+    margin-top: 3px;
+    display:inline-block;
+    float: left;
+    padding: 3px;
+  }
+  input {
+    height: 20px;
+    width: 220px;
+    padding: 5px 8px;
+  }
+  ul {
+    width: 750px;
+    list-style-type: none;
+    list-style-position: outside;
+    margin: 0px;
+    padding: 0px;
+  }
+  li {
+    padding: 12px;
+    position: relative;
+  }
+  .submit {
+    background-color: #68b12f;
+    background: -webkit-gradient(linear, left to, left bottom, from(#68b12f), to(#50911e));
+    background: -webkit-linear-gradient(top, #68b12f, #50911e);
+    background: -moz-linear-gradient(top, #68b12f, #50911e);
+    background: -ms-linear-gradient(top, #68b12f, #50911e);
+    background: -o-linear-gradient(top, #68b12f, #50911e);
+    background: linear-gradient(top, #68b12f, #50911e);
+    border: 1px solid #5b992b;
+    border-bottom: 1px solid #5b992b;
+    border-radius: 3px;
+    -webkit-border-radis: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    bord-shadow: inset 0 1px 0 0 #9fd574;
+    -webkit-box-shadow: 0 1px 0 0 #9fd574 inset;
+    -moz-box-shadow: 0 1px 0 0 #9fd574 inset;
+    -ms-box-shadow: 0 1px 0 0 #9fd574 inset;
+    color: white;
+    font-weight: bold;
+    padding: 6px 20px;
+    text-align: center;
+    text-shadow: 0 -1px 0 #396715;
+    height: 30px;
+    text-align: none;
+    &:hover {
+      opacity: .85;
+      cursor: pointer;
+    }
+    &:active {
+      border: 1px solid #20911e;
+      box-shadow: 0 0 10px 5px #356b0b inset;
+      -webkit-box-shadow: 0 0 10px 5px #356b0b inset;
+      -moz-box-shadow: 0 0 10px 5px #356b0b inset;
+      -ms-box-shadow: 0 0 10px 5px #356b0b inset;
+      -o-box-shadow: 0 0 10px 5px #356b0b inset;
+    }
+  }
 }
 
 /* banks */
@@ -206,12 +201,12 @@ li {
   padding: 3px 0px 0px 20px;
   margin-right: 15px;
   font-weight: bold;
+  &:hover {
+    color: #fff;
+    text-shadow: 0 0 20px #28B024;
+  }
 }
 
-#logo:hover {
-  color: #fff;
-  text-shadow: 0 0 20px #28B024;
-}
 
 /* envelopes */
 
@@ -230,27 +225,25 @@ li {
   li {
     font-size: 13px;
   }
-}
+  .category {
+    float: left;
+    clear: right;
+    font-size: 18px;
+    margin: 5px 5px 5px 5px;
+  }
 
-#category {
-  float: left;
-  clear: right;
-  font-size: 18px;
-  margin: 5px 5px 5px 5px;
-}
+  .amount {
+    float: right;
+    clear: left;
+    margin: -28px 5px 10px 0;
+    font-size: 20px;
+  }
 
-#amount {
-  float: right;
-  clear: left;
-  margin: -28px 5px 10px 0;
-  font-size: 20px;
+  .options {
+    margin: 5px 0 5px 0;
+    clear: right;
+  }
 }
-
-#options {
-  margin: 5px 0 5px 0;
-  clear: right;
-}
-
 
 /* transactions */
 
@@ -263,10 +256,9 @@ table {
   overflow: auto;
   border-spacing: 1px;
   border: 2px #40991C solid;
-}
-
-table td {
-  width: 161px;
+  td {
+    width: 161px;
+  }
 }
 
 tbody {

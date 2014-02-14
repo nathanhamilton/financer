@@ -1,14 +1,15 @@
 %h1 Dashboard
-=link_to 'Add new Envelope', new_envelope_path, class: 'button'
+.button
+  =link_to 'Add new Envelope', new_envelope_path
 .envelopes
   - @envelopes.each do |envelope|
     %ol
     .envelope
-      %li#category
+      %li.category
         = envelope.category
-      %li#amount
+      %li.amount
         = number_to_currency(envelope.total)
-      %li#options
+      %li.options
         = link_to 'View Transactions |', envelope_transactions_path(envelope)
         = link_to 'Edit |', edit_envelope_path(envelope)
         = link_to 'Delete', envelope_path(envelope), method: :delete, data: { confirm: 'Are you sure?' }
