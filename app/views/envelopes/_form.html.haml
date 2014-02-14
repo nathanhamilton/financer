@@ -11,4 +11,4 @@
         = f.label :bank_id
         = collection_select(:envelope, :bank_id, current_user.banks, :id, :name )
       %li
-        = f.submit
+        = f.submit class: "submit"
