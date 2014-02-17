@@ -5,7 +5,7 @@
   .envelopes
     - @envelopes.each do |envelope|
       %ol
-      .envelope
+      .box.envelope
         %li.category
           = envelope.category
         %li.amount
@@ -16,12 +16,12 @@
           = link_to 'Delete', envelope_path(envelope), method: :delete, data: { confirm: 'Are you sure?' }
         %br/
   .totals
-    .total
+    .box.total
       %p
         Your complete totals
       .amount
         = number_to_currency(current_user.transactions.sum('amount'))
-    .bank_totals
+    .box.bank_totals
       - @banks.each do |bank|
         %ol
           %li.name

@@ -72,6 +72,10 @@ li {
 
 /* form */
 
+input:focus {
+  outline: none;
+}
+
 .form {
   label {
     width: 150px;
@@ -210,14 +214,17 @@ li {
 }
 
 .envelope {
-  width: 200px;
-  height: 60px;
-  background-color: rgba(9,133,7, .2);
   margin-left: auto;
   margin-right: auto;
+  clear: both;
+}
+
+.box {
+  width: 200px;
+  min-height: 60px;
+  background-color: rgba(9,133,7, .2);
   border: 2px #027100 solid;
   border-radius: 7px;
-  clear: both;
   li {
     font-size: 13px;
   }
@@ -227,14 +234,12 @@ li {
     font-size: 18px;
     margin: 5px;
   }
-
   .amount {
     float: right;
     clear: left;
     margin: -28px 5px 10px 0;
     font-size: 20px;
   }
-
   .options {
     margin: 5px 0 5px 0;
     clear: right;
@@ -253,33 +258,15 @@ li {
 }
 
 .total {
-  width: 200px;
-  height: 60px;
-  background-color: rgba(9,133,7, .2);
-  margin: 0px 40px 0 auto;
-  border: 2px #027100 solid;
-  border-radius: 7px;
-  .name {
-    float: left;
-    clear: right;
-    font-size: 18px;
-    margin :20px 1px 18px 5px;
-  }
   .amount {
-    clear: left;
-    margin-top: 32px;
-    font-size: 20px;
+    margin: 19px 5px 0 0;
   }
 }
 
-.bank_totals {
-  width: 200px;
-  min-height: 80px;
-  background-color: rgba(9,133,7, .2);
-  margin: 15px 0px 10px 6px;
-  border: 2px #027100 solid;
-  border-radius: 7px;
-  overflow: auto;
+.box.bank_totals {
+  min-height: 230px;
+  margin: 15px 0 10px 0;
+  clear: left;
   ol {
     margin: 0;
     padding: 0;
@@ -287,9 +274,10 @@ li {
   .name {
     font-size: 18px;
     padding-top: 15px;
+    clear: both;
   }
   .amount {
-    margin-bottom: 10px;
+    margin: 10px 5px 0 5px;
     font-size: 20px;
   }
 }
