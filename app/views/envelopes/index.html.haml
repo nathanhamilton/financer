@@ -5,16 +5,15 @@
   .envelopes
     - @envelopes.each do |envelope|
       %ol
-      .box.envelope
-        %li.category
-          = envelope.category
-        %li.amount
-          = number_to_currency(envelope.transactions.sum('amount'))
-        %li.options
-          = link_to 'View Transactions |', envelope_transactions_path(envelope)
-          = link_to 'Edit |', edit_envelope_path(envelope)
-          = link_to 'Delete', envelope_path(envelope), method: :delete, data: { confirm: 'Are you sure?' }
-        %br/
+        .box.envelope
+          %li.category
+            = envelope.category
+          %li.amount
+            = number_to_currency(envelope.transactions.sum('amount'))
+          %li.options
+            = link_to 'View Transactions |', envelope_transactions_path(envelope)
+            = link_to 'Edit |', edit_envelope_path(envelope)
+            = link_to 'Delete', envelope_path(envelope), method: :delete, data: { confirm: 'Are you sure?' }
   .totals
     .box.total
       %p
