@@ -1,11 +1,10 @@
 class EnvelopesController < ApplicationController
   before_action :signed_in_user
   before_filter :envelope, only: :edit
-  before_filter :banks, only: [:new, :edit]
+  before_filter :banks, only: [:new, :index, :edit]
 
   def index
     @envelopes = current_user.envelopes
-    @banks = current_user.banks
   end
 
   def new
@@ -13,7 +12,7 @@ class EnvelopesController < ApplicationController
   end
 
   def create
-    @envelope = current_user.envelopes.build(envelope_params)
+    @envelope = current_user.envelopes.new(envelope_params)
     if @envelope.save
       flash[:success] = 'Congratulations! Your envelope has been created!'
       redirect_to dashboard_path
@@ -50,6 +49,6 @@ class EnvelopesController < ApplicationController
   end
 
   def banks
-    @banks = current_user.banks
+    @banks ||= current_user.banks
   end
 end
