@@ -1,5 +1,4 @@
 class TransactionsController < ApplicationController
-  before_action :signed_in_user
   before_filter :transaction, only: :edit
   before_filter :envelope, only: [:new, :edit]
 

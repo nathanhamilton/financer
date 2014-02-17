@@ -1,5 +1,4 @@
 class BanksController < ApplicationController
-  before_action :signed_in_user
   before_action :bank, only: :edit
 
   def new
@@ -7,7 +6,7 @@ class BanksController < ApplicationController
   end
 
   def create
-    bank = current_user.banks.build(bank_params)
+    bank = current_user.banks.new(bank_params)
     if bank.save
       flash[:success] = "Bank Created!"
       redirect_to user_path(current_user)
@@ -18,8 +17,7 @@ class BanksController < ApplicationController
   end
 
   def update
-    bank.update(bank_params)
-    if bank.save
+    if bank.update(bank_params)
       flash[:success] = "Bank has been updated!"
       redirect_to user_path(current_user)
     else
