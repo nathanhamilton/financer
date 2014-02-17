@@ -217,6 +217,7 @@ li {
   margin-right: auto;
   border: 2px #027100 solid;
   border-radius: 7px;
+  clear: both;
   li {
     font-size: 13px;
   }
@@ -241,13 +242,23 @@ li {
 }
 
 .totals {
+  min-width: 250px;
+  float: right;
+  clear: both;
+  margin-top: 10px;
+  p {
+    text-align: center;
+    margin: -31px 0 0 0;
+  }
+}
+
+.total {
   width: 200px;
   height: 60px;
   background-color: rgba(9,133,7, .2);
-  margin: -234px 40px 0 auto;
+  margin: 0px 40px 0 auto;
   border: 2px #027100 solid;
   border-radius: 7px;
-  float: right;
   .name {
     float: left;
     clear: right;
@@ -263,7 +274,28 @@ li {
     text-align: center;
     margin: -31px 0 0 0;
   }
+}
 
+.bank_totals {
+  width: 200px;
+  min-height: 80px;
+  background-color: rgba(9,133,7, .2);
+  margin: 15px 0px 10px 6px;
+  border: 2px #027100 solid;
+  border-radius: 7px;
+  overflow: auto;
+  ol {
+    margin: 0;
+    padding: 0;
+  }
+  .name {
+    font-size: 18px;
+    padding-top: 15px;
+  }
+  .amount {
+    margin-bottom: 10px;
+    font-size: 20px;
+  }
 }
 
 /* transactions */

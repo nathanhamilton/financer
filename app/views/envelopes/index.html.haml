@@ -16,11 +16,15 @@
           = link_to 'Delete', envelope_path(envelope), method: :delete, data: { confirm: 'Are you sure?' }
         %br/
   .totals
-    %p
-      Your complete total
-    .amount
-      = number_to_currency(current_user.transactions.sum('amount'))
-    %p
-      Bank totals
-    .amount
-      = number_to_currency(current_user.banks.transactions.sum('amount'))
+    .total
+      %p
+        Your complete totals
+      .amount
+        = number_to_currency(current_user.transactions.sum('amount'))
+    .bank_totals
+      - @banks.each do |bank|
+        %ol
+          %li.name
+            = bank.name
+          %li.amount
+            = number_to_currency(bank.transactions.sum('amount'))

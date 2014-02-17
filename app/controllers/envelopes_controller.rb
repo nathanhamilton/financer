@@ -5,6 +5,7 @@ class EnvelopesController < ApplicationController
 
   def index
     @envelopes = current_user.envelopes
+    @banks = current_user.banks
   end
 
   def new
