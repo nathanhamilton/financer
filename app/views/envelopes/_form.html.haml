@@ -5,9 +5,6 @@
         = f.label :category
         = f.text_field :category
       %li
-        = f.label :total
-        = f.text_field :total
-      %li
         = f.label :bank_id
         = collection_select(:envelope, :bank_id, current_user.banks, :id, :name )
       %li

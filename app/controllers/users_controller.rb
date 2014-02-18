@@ -37,9 +37,9 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    user.destroy
+    user.destroy unless user == current_user
     flash[:success] = "User has been deleted"
-    redirect_to dashboard_path
+    redirect_to root_path
   end
 
   private

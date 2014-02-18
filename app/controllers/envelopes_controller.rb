@@ -1,6 +1,6 @@
 class EnvelopesController < ApplicationController
-  before_filter :envelope, only: :edit
-  before_filter :banks, only: [:new, :index, :edit]
+  before_action :envelope, only: :edit
+  before_action :banks, only: [:new, :index, :edit]
 
   def index
     @envelopes = current_user.envelopes

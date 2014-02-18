@@ -9,8 +9,13 @@
       %li
         Email:
         = user.email
-
-        = link_to 'Edit |', edit_user_path(user)
-        = link_to 'View |', user_path(user)
-        = link_to 'Delete', user, method: :delete
+      %li
+        Total Envelopes
+        = user.envelopes.count
+      %li
+        Total Banks
+        = user.banks.count
+      %li
+        Total Transactions
+        = user.transactions.count
       %br/

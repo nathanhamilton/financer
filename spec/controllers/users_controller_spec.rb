@@ -71,10 +71,11 @@ describe UsersController do
   end
 
   describe "DELETE destroy" do
-    let!(:user) { FactoryGirl.create :user, id: 1 }
+    let!(:user) { FactoryGirl.create :user }
+
     it "should delete the user" do
-      delete :destroy, id: 1
-      response.should redirect_to dashboard_path
+      delete :destroy, id: user.id
+      response.should redirect_to root_path
     end
   end
 end
