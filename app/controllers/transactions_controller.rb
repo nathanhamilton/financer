@@ -1,6 +1,7 @@
 class TransactionsController < ApplicationController
   before_action :transaction, only: :edit
   before_action :envelope, only: [:new, :edit]
+  before_action :banks
 
   def index
     @transactions = envelope.transactions
@@ -50,5 +51,9 @@ class TransactionsController < ApplicationController
 
   def transaction_params
     params.require(:transaction).permit(:name, :transaction_type, :date, :amount, :user_id, :envelope_id)
+  end
+
+  def banks
+    @banks = current_user.banks
   end
 end

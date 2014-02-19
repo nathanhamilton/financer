@@ -1,5 +1,9 @@
 - provide(:title, "New Bank")
-%h1 Add a bank account
-.back_button
-  = link_to 'Back', user_path(current_user)
-= render "form"
+.row
+  .col-sm-9.content-area
+    %h3 Add a bank account
+    = render "form"
+    .back_button
+      = link_to 'Cancel', user_path(current_user), class: 'btn btn-default btn-md'
+  .col-sm-3.sidebar
+    = render 'shared/sidebar'

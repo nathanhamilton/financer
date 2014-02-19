@@ -1,0 +1,30 @@
+.logo
+  = image_tag "financer_logo-01.jpg", class: "img-responsive", alt: "Responsive image", class: "center-block"
+.user-info
+  .user-info-name
+    = current_user.name
+.btn-group.btn-group-xs
+  = link_to dashboard_path, class: "btn btn-default" do
+    %span.glyphicon.glyphicon-home
+    Home
+  = link_to user_path(current_user), class: "btn btn-default" do
+    %span.glyphicon.glyphicon-user
+    Profile
+  = link_to signout_path, method: 'delete', class: "btn btn-default" do
+    %span.glyphicon.glyphicon-off
+    Log Off
+  = link_to '#', class: "btn btn-default" do
+    %span.glyphicon.glyphicon-stats
+    Stats
+.totals.well
+  .total
+    %p
+      Your complete total
+  .total_amount
+    = number_to_currency(current_user.transactions.sum('amount'))
+  .bank_totals
+    - @banks.each do |bank|
+      .bonk_totals_name
+        = bank.name
+      .bank_totals_amount
+        = number_to_currency(bank.transactions.sum('amount'))

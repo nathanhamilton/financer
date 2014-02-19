@@ -1,28 +1,37 @@
-- provide(:title, "Transaction")
-%h1 #{@envelope.category}'s Transactions
-.back_button
-  = link_to 'Back', dashboard_path
-.button
-  = link_to 'Add Transaction', new_envelope_transaction_path
-.transactions
-  %table
-    %tr
-      %th Name
-      %th Transaction Type
-      %th Date
-      %th Amount
-      %th Edit
-    - @transactions.each do |transaction|
-      %tr
-        %td
-          = transaction.name
-        %td
-          = transaction.transaction_type
-        %td
-          = transaction.date.to_formatted_s(:rfc822)
-        %td
-          = number_to_currency(transaction.amount)
-        %td
-          = link_to 'Edit |', edit_envelope_transaction_path(id: transaction.id)
-          = link_to 'Delete', envelope_transaction_path(id: transaction.id), method: :delete, data: { confirm: "Are you sure?" }
+- provide(:title, "Transactions")
+.row
+  .col-sm-9.content-area
+    %h1 Transactions for #{@envelope.category}
+    .panel.panel-default
+      .panel-body
+        %h4 Total in this envelope: #{number_to_currency(@envelope.transactions.sum('amount'))}
 
+    .transactions
+      .table-responsive
+        %table.table.table-hover
+          %tr
+            %th Name
+            %th Transaction Type
+            %th Date
+            %th Amount
+            %th Edit
+          - @transactions.each do |transaction|
+            %tr
+              %td
+                = transaction.name
+              %td
+                = transaction.transaction_type
+              %td
+                = transaction.date.to_formatted_s(:rfc822)
+              %td
+                = number_to_currency(transaction.amount)
+              %td
+                = link_to 'Edit |', edit_envelope_transaction_path(id: transaction.id)
+                = link_to 'Delete', envelope_transaction_path(id: transaction.id), method: :delete, data: { confirm: "Are you sure?" }
+        .link
+          = link_to 'Add Transaction', new_envelope_transaction_path, class: "btn btn-default btn-large"
+    .back_button
+      = link_to 'Back to Dashboard', dashboard_path, class: "btn btn-default btn-md"
+
+  .col-sm-3.sidebar
+    = render 'shared/sidebar'

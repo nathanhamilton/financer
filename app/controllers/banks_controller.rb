@@ -1,5 +1,6 @@
 class BanksController < ApplicationController
   before_action :bank, only: :edit
+  before_action :banks
 
   def new
     @bank = Bank.new
@@ -40,5 +41,9 @@ class BanksController < ApplicationController
 
   def bank
     @bank ||= Bank.find(params[:id])
+  end
+
+  def banks
+    @banks ||= current_user.banks
   end
 end

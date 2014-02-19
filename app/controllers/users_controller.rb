@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   skip_before_action :signed_in_user, only: [:new, :create]
   before_action :user, except: [:index, :new, :create]
+  before_action :banks, except: [:new, :create]
 
   def index
     @users = User.all
@@ -22,10 +23,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def show
-    @banks = @user.banks
-  end
-
   def update
     if user.update(user_params)
       flash[:success] = "Your information was successfully saved"
@@ -43,6 +40,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def banks
+    @banks ||= @user.banks
+  end
 
   def user_params
     params.require(:user).permit(:email, :name, :password, :password_confirmation)
