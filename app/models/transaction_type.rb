@@ -1,16 +1,22 @@
 class TransactionType < OpenStruct
 
-  TransactionTypeValue = Struct.new(:id, :name, :negative) do
+  class TransactionTypeValue
+    def initialize(id, name, negative: true)
+      @id = id
+      @name = name
+      @negative = negative
+    end
+
     def negative?
-      !!negative
+      !!@negative
     end
   end
 
   TYPES = [
-    TransactionTypeValue.new(1, 'Debit', true),
-    TransactionTypeValue.new(2, 'Credit', true),
-    TransactionTypeValue.new(3, 'Check', true),
-    TransactionTypeValue.new(4, 'Income', false)
+    TransactionTypeValue.new(1, 'Debit'),
+    TransactionTypeValue.new(2, 'Credit'),
+    TransactionTypeValue.new(3, 'Check'),
+    TransactionTypeValue.new(4, 'Income', negative: false)
   ]
 
   def self.all
