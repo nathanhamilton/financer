@@ -1,17 +1,23 @@
 class TransactionType < OpenStruct
-  TYPES = {
-    1 => { id: 1, name: 'Debit', negative?: true },
-    2 => { id: 2, name: 'Credit', negative?: true },
-    3 => { id: 3, name: 'Check', negative?: true },
-    4 => { id: 4, name: 'Income' }
-  }
+
+  TransactionTypeValue = Struct.new(:id, :name, :negative) do
+    def negative?
+      !!negative
+    end
+  end
+
+  TYPES = [
+    TransactionTypeValue.new(1, 'Debit', true),
+    TransactionTypeValue.new(2, 'Credit', true),
+    TransactionTypeValue.new(3, 'Check', true),
+    TransactionTypeValue.new(4, 'Income', false)
+  ]
 
   def self.all
-    TYPES.keys.map { |id| new(TYPES[id])}
+    TYPES
   end
 
   def self.find_by_name(str)
-    id = TYPES.keys.detect { |id| TYPES[id][:name] == str }
-    new(TYPES[id]) if id
+    all.detect { |val| val.name == str } || :no_transaction_type_value
   end
 end
