@@ -36,4 +36,4 @@ group :production do
   gem 'pg', '~> 0.17.1'
 end
 
-ruby '2.0.0p247'
+ruby '2.0.0'
