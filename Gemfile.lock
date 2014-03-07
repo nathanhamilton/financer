@@ -109,6 +109,7 @@ GEM
     mini_portile (0.5.2)
     minitest (4.7.5)
     multi_json (1.8.4)
+    newrelic_rpm (3.7.3.199)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
     pg (0.17.1)
@@ -215,6 +216,7 @@ DEPENDENCIES
   jquery-rails
   launchy
   lol_dba
+  newrelic_rpm
   pg (~> 0.17.1)
   rails (= 4.0.2)
   rspec-rails (~> 2.14.1)
