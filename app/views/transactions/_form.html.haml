@@ -12,6 +12,6 @@
         = f.date_select :date, order: [:month, :day, :year], default: Time.zone.now.to_date
       %li
         = f.label :amount
-        = f.number_field :amount, step: 0.02
+        = f.number_field :amount, step: 0.01
       %li
         = f.submit class: 'submit'
