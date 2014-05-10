@@ -1,5 +1,10 @@
 - provide(:title, "New Transaction")
-%p New Transaction for Envelope: #{@envelope.category}
-.back_button
-  = link_to 'Back', dashboard_path
-= render 'form'
+.row
+  .col-sm-9.content-area
+    %h3 New Transaction for Envelope: #{@envelope.category}
+    %p Total #{number_to_currency(@envelope.transactions.sum('amount'))}
+    = render 'form'
+    .back_button
+      = link_to 'Cancel', envelope_transactions_path, class: 'btn btn-default btn-md'
+  .col-sm-3.sidebar
+    = render 'shared/sidebar'

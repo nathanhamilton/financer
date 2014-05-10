@@ -12,6 +12,9 @@ gem 'sass-rails', '~> 4.0.0'
 gem 'haml', '~> 4.0.4'
 gem 'newrelic_rpm'
 gem 'zeus'
+gem 'bootstrap-sass', '~> 3.1.1'
+gem 'bootstrap_form'
+gem 'zeus'
 
 group :development, :test do
   gem 'sqlite3', '~> 1.3.8'

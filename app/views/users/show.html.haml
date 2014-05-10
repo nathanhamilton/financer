@@ -1,17 +1,21 @@
 - provide(:title, "#{@user.name}")
-.content
-  %h1
-    = @user.name
-  %p Welcome to your financer profile. Please feel free to modify your personal details.
-  .users
-    %ol
-      %li
-        Name:
+.row
+  .col-sm-9.content-area
+    .content
+      %h1
         = @user.name
-      %li
-        Email:
-        = @user.email
-      = link_to 'Edit my personal details', edit_user_path(@user)
-  .banks
-    %h3 My Banks
-    = render "banks/index"
+      %p Welcome to your financer profile. Please feel free to modify your personal details.
+      .users
+        %ol
+          %li
+            Name:
+            = @user.name
+          %li
+            Email:
+            = @user.email
+          = link_to 'Edit my personal details', edit_user_path(@user)
+      .banks
+        %h3 My Banks
+        = render "banks/index"
+  .col-sm-3.sidebar
+    = render 'shared/sidebar'

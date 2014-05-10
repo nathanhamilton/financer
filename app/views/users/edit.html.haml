@@ -1,7 +1,10 @@
 - provide(:title, 'Edit Profile')
-%h1.header_style
-  = @user.name
-%p Change your user information
-.back_button
-  = link_to 'Back', user_path(current_user)
-= render "form"
+.row
+  .col-sm-9.content-area
+    %h3= @user.name
+    %p Change your user information
+    = render "form"
+    .back_button
+      = link_to 'Cancel', user_path(current_user), class: 'btn btn-default btn-md'
+  .col-sm-3.sidebar
+    = render 'shared/sidebar'

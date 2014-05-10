@@ -1,11 +1,6 @@
 .form
-  %ul
-    = form_for @envelope do |f|
-      %li
-        = f.label :category
-        = f.text_field :category
-      %li
-        = f.label :bank_id
-        = collection_select(:envelope, :bank_id, current_user.banks, :id, :name )
-      %li
-        = f.submit class: "submit"
+  = bootstrap_form_for @envelope do |f|
+    = f.text_field :category
+    = collection_select(:envelope, :bank_id, current_user.banks, :id, :name )
+    %p
+    = f.submit class: 'btn btn-default btn-md'

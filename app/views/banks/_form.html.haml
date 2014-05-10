@@ -1,9 +1,5 @@
 .form
-  %ul
-    = form_for @bank do |f|
-      %li
-        = f.label :name
-        = f.text_field :name
-      %li
-        = f.submit class: "submit"
+  = bootstrap_form_for @bank do |f|
+    = f.text_field :name
+    = f.submit class: "submit", class: 'btn btn-default btn-md'
 
