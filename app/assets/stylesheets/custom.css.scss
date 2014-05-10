@@ -6,7 +6,6 @@
 }
 
 body {
-  background-color: #C9C9C9;
   font-family: Tahoma;
 }
 
@@ -49,6 +48,29 @@ li {
   padding: 20px;
   h1 {
     text-align: center;
+  }
+}
+
+.static-content-area {
+  background-color: white;
+  height: 100%;
+  margin: 0 -15px 0 -15px;
+}
+
+.signin-box {
+  padding: 10px;
+  max-width: 350px;
+  height: 100%;
+  background-color: white;
+  margin: 0 auto 15% auto;
+
+  .signup-box {
+    border: 1px #53BD63 solid;
+    width: 100%;
+    margin-top: 20px ;
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px;
   }
 }
 
@@ -141,16 +163,17 @@ li {
   }
 }
 
+.logo {
+  img {
+    max-width: 80%;
+  }
+}
 
 .sidebar {
   text-align: center;
   background-color: #53BD63;
   padding-bottom: 10px;
-  .logo {
-    img {
-      max-width: 80%;
-    }
-  }
+
   .user-info {
     margin: 10px 0 5px 0;
     .user-info-name {

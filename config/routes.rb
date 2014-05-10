@@ -6,7 +6,7 @@ Financer::Application.routes.draw do
     resources :transactions
   end
 
-  root to: 'static_pages#home'
+  root to: 'envelopes#index'
 
   get '/about',      to: 'static_pages#about'
   get '/signup',     to: 'users#new'

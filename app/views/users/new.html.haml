@@ -1,6 +1,8 @@
 - provide(:title, "Signup")
-%h1 Signup
-%p Your only four steps away...
-= render "form"
-.back_button
-  = link_to 'Cancel', root_path, class: 'btn btn-default btn-md'
+.static-content-area
+  .signin-box
+    %h1 Signup
+    %p You're only four steps away...
+    = render "form"
+    .back_button
+      = link_to 'Cancel', root_path, class: 'btn btn-default btn-md'
