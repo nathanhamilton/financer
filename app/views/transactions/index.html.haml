@@ -26,8 +26,8 @@
               %td
                 = number_to_currency(transaction.amount)
               %td
-                = link_to 'Edit |', edit_envelope_transaction_path(id: transaction.id)
-                = link_to 'Delete', envelope_transaction_path(id: transaction.id), method: :delete, data: { confirm: "Are you sure?" }
+                = button_to 'Edit', edit_envelope_transaction_path(id: transaction.id), class: "btn btn-xs"
+                = button_to 'Delete', envelope_transaction_path(id: transaction.id), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-xs editing"
         .link
           = link_to 'Add Transaction', new_envelope_transaction_path, class: "btn btn-default btn-large"
     .back_button
