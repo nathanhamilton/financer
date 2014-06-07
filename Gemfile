@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'rails', '4.1.1'
 gem 'bcrypt-ruby'
 gem 'bootstrap-sass', '~> 3.1.1'
 gem 'bootstrap_form'
@@ -9,11 +10,9 @@ gem 'haml-rails'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 gem 'newrelic_rpm'
-gem 'rails', '4.1.1'
 gem 'sass-rails', '~> 4.0.0'
 gem 'turbolinks'
 gem 'uglifier', '~> 1.3.0'
-gem 'zeus'
 
 group :development, :test do
   gem 'better_errors'

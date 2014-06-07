@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe UsersController do
-
+  let!(:user) { FactoryGirl.create :user, id: 1 }
   before { skip_sign_in }
 
   describe "GET index" do
@@ -12,7 +12,6 @@ describe UsersController do
   end
 
   describe "GET show" do
-    let!(:user) { FactoryGirl.create :user }
     it "should show the individual user" do
       get :show, id: user.id
       response.should be_success
@@ -44,7 +43,6 @@ describe UsersController do
   end
 
   describe "GET edit" do
-    let!(:user) { FactoryGirl.create :user, id: 1 }
     it "should edit the user" do
       get :edit, id: 1
       response.should be_success
@@ -52,7 +50,6 @@ describe UsersController do
   end
 
   describe "PUT update" do
-    let!(:user) { FactoryGirl.create :user, id: 1 }
 
     context "success" do
       it "should redirect to the users profile" do
@@ -71,8 +68,6 @@ describe UsersController do
   end
 
   describe "DELETE destroy" do
-    let!(:user) { FactoryGirl.create :user }
-
     it "should delete the user" do
       delete :destroy, id: user.id
       response.should redirect_to root_path

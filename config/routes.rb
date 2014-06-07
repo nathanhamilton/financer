@@ -8,10 +8,10 @@ Financer::Application.routes.draw do
 
   root to: 'envelopes#index'
 
+  get '/home',       to: 'static_pages#home'
   get '/about',      to: 'static_pages#about'
   get '/signup',     to: 'users#new'
   get '/signin',     to: 'sessions#new'
   delete '/signout', to: 'sessions#destroy'
   get '/dashboard',  to: 'envelopes#index'
-
 end

@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   skip_before_action :signed_in_user, only: [:new, :create]
   before_action :user, except: [:index, :new, :create]
-  before_action :banks, except: [:new, :create]
+  before_action :banks, except: [:index, :new, :create]
 
   def index
     @users = User.all
