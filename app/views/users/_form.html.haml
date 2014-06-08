@@ -1,5 +1,5 @@
 .form
-  = bootstrap_form_for @user do |f|
+  = bootstrap_form_for [:users, @user] do |f|
     = f.text_field :name
     = f.text_field :email
     = f.password_field :password

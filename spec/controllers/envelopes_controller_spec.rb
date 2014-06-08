@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe EnvelopesController do
+describe User::EnvelopesController do
   let!(:user) { FactoryGirl.create :user }
   let!(:bank) { FactoryGirl.create :bank }
 
