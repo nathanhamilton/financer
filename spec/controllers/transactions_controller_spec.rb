@@ -1,13 +1,13 @@
 require 'spec_helper'
 
-describe TransactionsController do
+describe TransactionsController, :type => :controller do
   let!(:user) { FactoryGirl.create :user }
   let!(:bank) { FactoryGirl.create :bank}
   let!(:envelope) { FactoryGirl.create :envelope }
 
   before do
-    controller.stub(:current_user).and_return user
-    controller.stub(:envelope).and_return envelope
+    allow(controller).to receive(:current_user).and_return user
+    allow(controller).to receive(:envelope).and_return envelope
   end
 
   before { skip_sign_in }
@@ -18,14 +18,14 @@ describe TransactionsController do
 
     it "shows a list of transactions belonging to envelope" do
       get :index, envelope_id: envelope.id
-      response.should be_success
+      expect(response).to be_success
     end
   end
 
   describe "GET new" do
     it 'creates a new transaction' do
       get :new, envelope_id: envelope.id
-      response.should be_success
+      expect(response).to be_success
     end
   end
 
@@ -39,7 +39,7 @@ describe TransactionsController do
                                                                amount: 4000,
                                                                user_id: user.id,
                                                                envelope_id: envelope.id}
-        response.should redirect_to envelope_transactions_path(envelope)
+        expect(response).to redirect_to envelope_transactions_path(envelope)
       end
     end
 
@@ -50,7 +50,7 @@ describe TransactionsController do
                                                                date: '',
                                                                amount: nil,
                                                                user_id: nil}
-        response.should render_template :new
+        expect(response).to render_template :new
       end
     end
   end
@@ -61,7 +61,7 @@ describe TransactionsController do
 
     it "edits the transaction" do
       get :edit, envelope_id: envelope.id, id: transaction.id
-      response.should be_success
+      expect(response).to be_success
     end
   end
 
@@ -72,14 +72,14 @@ describe TransactionsController do
     context 'success' do
       it "redirects to the envelopes path" do
         put :update, envelope_id: envelope.id, id: transaction.id, transaction: {name: 'New Grocery'}
-        response.should redirect_to envelope_transactions_path(envelope)
+        expect(response).to redirect_to envelope_transactions_path(envelope)
       end
     end
 
     context 'failure' do
       it "renders the edit path" do
         put :update, envelope_id: envelope.id, id: transaction.id, transaction: {name: ''}
-        response.should render_template :edit
+        expect(response).to render_template :edit
       end
     end
   end
@@ -89,7 +89,7 @@ describe TransactionsController do
                                                           user_id: user.id }
     it "redirects to the envelope path" do
       delete :destroy, envelope_id: envelope.id, id: transaction.id
-      response.should redirect_to envelope_transactions_path(envelope)
+      expect(response).to redirect_to envelope_transactions_path(envelope)
     end
   end
 end

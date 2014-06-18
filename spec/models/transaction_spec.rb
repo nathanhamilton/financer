@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Transaction do
+describe Transaction, :type => :model do
   let!(:user) { FactoryGirl.create :user }
   let!(:bank) { FactoryGirl.create :bank }
   let!(:envelope) { FactoryGirl.create :envelope }
@@ -19,49 +19,53 @@ describe Transaction do
 
   subject { @transaction }
 
-  it { should respond_to :user }
-  it { should respond_to :envelope }
-  it { should respond_to :name }
-  it { should respond_to :transaction_type }
-  it { should respond_to :date }
-  it { should respond_to :amount }
-  it { should respond_to :user_id }
-  it { should respond_to :envelope_id }
-  it { should validate_presence_of :name }
-  it { should validate_presence_of :transaction_type }
-  it { should validate_presence_of :date }
-  it { should validate_presence_of :amount }
-  it { should validate_presence_of :user_id }
-  it { should validate_presence_of :envelope_id }
-  it { should belong_to :envelope }
-  it { should belong_to :user }
-  its( :envelope ) { should == envelope }
+  it { is_expected.to respond_to :user }
+  it { is_expected.to respond_to :envelope }
+  it { is_expected.to respond_to :name }
+  it { is_expected.to respond_to :transaction_type }
+  it { is_expected.to respond_to :date }
+  it { is_expected.to respond_to :amount }
+  it { is_expected.to respond_to :user_id }
+  it { is_expected.to respond_to :envelope_id }
+  it { is_expected.to validate_presence_of :name }
+  it { is_expected.to validate_presence_of :transaction_type }
+  it { is_expected.to validate_presence_of :date }
+  it { is_expected.to validate_presence_of :amount }
+  it { is_expected.to validate_presence_of :user_id }
+  it { is_expected.to validate_presence_of :envelope_id }
+  it { is_expected.to belong_to :envelope }
+  it { is_expected.to belong_to :user }
 
-  it { should be_valid }
+  describe '#envelope' do
+    subject { super().envelope }
+    it { is_expected.to eq(envelope) }
+  end
+
+  it { is_expected.to be_valid }
 
   describe "when name is blank" do
     before { @transaction.name = ''}
-    it { should_not be_valid }
+    it { is_expected.not_to be_valid }
   end
 
   describe "when name is too long" do
     before { @transaction.name = 'a' * 51}
-    it { should_not be_valid }
+    it { is_expected.not_to be_valid }
   end
 
   describe "when amount is blank" do
     before { @transaction.amount = nil }
-    it { should_not be_valid }
+    it { is_expected.not_to be_valid }
   end
 
   describe "when the date is blank" do
     before { @transaction.date = ''}
-    it { should_not be_valid }
+    it { is_expected.not_to be_valid }
   end
 
   describe "when transaction_type is blank" do
     before { @transaction.transaction_type = ''}
-    it { should_not be_valid }
+    it { is_expected.not_to be_valid }
   end
 
   describe ".transaction_type_object" do
@@ -69,7 +73,7 @@ describe Transaction do
 
     it "returns the transaction type object" do
       type = TransactionType.find_by_name(@transaction.transaction_type)
-      type.name.should == 'Credit'
+      expect(type.name).to eq('Credit')
     end
   end
 
@@ -83,7 +87,7 @@ describe Transaction do
       end
 
       it "should prepend - to amount if object.negative? == true" do
-        @transaction.amount.to_f.should == -400.30
+        expect(@transaction.amount.to_f).to eq(-400.30)
       end
     end
 
@@ -95,7 +99,7 @@ describe Transaction do
       end
 
       it "should prepend - to amount if object.negative? == true" do
-        @transaction.amount.to_f.should == -400.30
+        expect(@transaction.amount.to_f).to eq(-400.30)
       end
     end
 
@@ -107,7 +111,7 @@ describe Transaction do
       end
 
       it "should prepend - to amount if object.negative? == true" do
-        @transaction.amount.to_f.should == -400.30
+        expect(@transaction.amount.to_f).to eq(-400.30)
       end
     end
 
@@ -119,7 +123,7 @@ describe Transaction do
       end
 
       it "should not prepend - to amount if object.negative? == true" do
-        @transaction.amount.to_f.should_not == -400.30
+        expect(@transaction.amount.to_f).not_to eq(-400.30)
       end
     end
   end

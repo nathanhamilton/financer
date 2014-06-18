@@ -1,11 +1,11 @@
 require 'spec_helper'
 
-describe EnvelopesController do
+describe EnvelopesController, :type => :controller do
   let!(:user) { FactoryGirl.create :user }
   let!(:bank) { FactoryGirl.create :bank }
 
   before do
-    controller.stub(:current_user).and_return user
+    allow(controller).to receive(:current_user).and_return user
     ApplicationController.tap do |controller|
       controller.skip_before_filter :signed_in_user
     end
@@ -16,14 +16,14 @@ describe EnvelopesController do
 
     it "shows the users list of envelopes" do
       get :index
-      response.should be_success
+      expect(response).to be_success
     end
   end
 
   describe "GET new" do
     it "creates a new envelope" do
       get :new
-      response.should be_success
+      expect(response).to be_success
     end
   end
 
@@ -32,14 +32,14 @@ describe EnvelopesController do
     context "success" do
       it "creates the envelope" do
         post :create, envelope: { category: 'Car', total: 30, bank_id: bank.id }
-        response.should redirect_to dashboard_path
+        expect(response).to redirect_to dashboard_path
       end
     end
 
     context "failure" do
       it "renders the new page" do
         post :create, envelope: { category: '', total: nil, bank_id: nil }
-        response.should render_template :new
+        expect(response).to render_template :new
       end
     end
   end
@@ -49,7 +49,7 @@ describe EnvelopesController do
 
     it "updates the envelope" do
       get :edit, id: envelope.id
-      response.should be_success
+      expect(response).to be_success
     end
   end
 
@@ -59,14 +59,14 @@ describe EnvelopesController do
     context "success" do
       it "redirects to user path" do
         put :update, id: envelope.id, envelope: { category: "home", total: 200, bank_id: bank.id }
-        response.should redirect_to dashboard_path
+        expect(response).to redirect_to dashboard_path
       end
     end
 
     context "failure" do
       it "renders the edit page" do
         put :update, id: envelope.id, envelope: { category: '' }
-        response.should render_template :edit
+        expect(response).to render_template :edit
       end
     end
   end
@@ -76,7 +76,7 @@ describe EnvelopesController do
 
     it "changes the envelope count by 1" do
       delete :destroy, id: envelope.id
-      response.should redirect_to dashboard_path
+      expect(response).to redirect_to dashboard_path
     end
   end
 end

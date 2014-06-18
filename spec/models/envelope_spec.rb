@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Envelope do
+describe Envelope, :type => :model do
   let!(:user) { FactoryGirl.create :user }
   let!(:bank) { FactoryGirl.create :bank }
 
@@ -10,24 +10,27 @@ describe Envelope do
 
   subject { @envelope }
 
-  it { should respond_to :bank }
-  it { should respond_to :category }
-  it { should respond_to :total }
-  it { should respond_to :transaction }
-  it { should belong_to :bank }
-  it { should have_many :transactions }
+  it { is_expected.to respond_to :bank }
+  it { is_expected.to respond_to :category }
+  it { is_expected.to respond_to :total }
+  it { is_expected.to respond_to :transaction }
+  it { is_expected.to belong_to :bank }
+  it { is_expected.to have_many :transactions }
 
-  its(:bank) { should == bank }
+  describe '#bank' do
+    subject { super().bank }
+    it { is_expected.to eq(bank) }
+  end
 
-  it { should be_valid }
+  it { is_expected.to be_valid }
 
   describe "When no category is given" do
     before { @envelope.category = '' }
-    it { should_not be_valid }
+    it { is_expected.not_to be_valid }
   end
 
   describe "When no bank_id is given" do
     before { @envelope.bank_id = nil }
-    it { should_not be_valid }
+    it { is_expected.not_to be_valid }
   end
 end
