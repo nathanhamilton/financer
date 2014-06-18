@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Envelope, :type => :model do
+describe Envelope, type: :model do
   let!(:user) { FactoryGirl.create :user }
   let!(:bank) { FactoryGirl.create :bank }
 

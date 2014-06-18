@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe TransactionsController, :type => :controller do
+describe TransactionsController, type: :controller do
   let!(:user) { FactoryGirl.create :user }
   let!(:bank) { FactoryGirl.create :bank}
   let!(:envelope) { FactoryGirl.create :envelope }

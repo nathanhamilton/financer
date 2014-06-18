@@ -10,5 +10,5 @@ require 'spec_helper'
 #     end
 #   end
 # end
-describe TransactionsHelper, :type => :helper do
+describe TransactionsHelper, type: :helper do
 end

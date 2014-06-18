@@ -10,5 +10,5 @@ require 'spec_helper'
 #     end
 #   end
 # end
-describe EnvelopesHelper, :type => :helper do
+describe EnvelopesHelper, type: :helper do
 end

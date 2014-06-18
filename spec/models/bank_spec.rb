@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Bank, :type => :model do
+describe Bank, type: :model do
   let!(:user) { FactoryGirl.create :user }
 
   before do

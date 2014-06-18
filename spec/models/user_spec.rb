@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe User, :type => :model do
+describe User, type: :model do
 
   before { @user = User.new( name: "Foobar", email: "test@example.com",
                              password: "876asdf", password_confirmation: "876asdf")}

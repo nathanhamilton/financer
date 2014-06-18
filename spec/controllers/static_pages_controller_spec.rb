@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe StaticPagesController, :type => :controller do
+describe StaticPagesController, type: :controller do
 
   describe "GET home" do
     it "should show the home page" do

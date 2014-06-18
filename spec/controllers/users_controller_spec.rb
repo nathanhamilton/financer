@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe UsersController, :type => :controller do
+describe UsersController, type: :controller do
   let!(:user) { FactoryGirl.create :user, id: 1 }
   before { skip_sign_in }
 

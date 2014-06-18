@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe BanksController, :type => :controller do
+describe BanksController, type: :controller do
   let!(:user) { FactoryGirl.create :user }
   before do
     allow(controller).to receive(:current_user).and_return user

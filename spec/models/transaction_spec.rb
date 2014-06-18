@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Transaction, :type => :model do
+describe Transaction, type: :model do
   let!(:user) { FactoryGirl.create :user }
   let!(:bank) { FactoryGirl.create :bank }
   let!(:envelope) { FactoryGirl.create :envelope }
