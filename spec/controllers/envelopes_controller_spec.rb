@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe EnvelopesController, type: :controller do
   let!(:user) { FactoryGirl.create :user }

@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Bank, type: :model do
   let!(:user) { FactoryGirl.create :user }
