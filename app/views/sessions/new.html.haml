@@ -4,7 +4,7 @@
     .logo
       = image_tag 'financer_logo-01.jpg', class: 'img-responsive', alt: 'Responsive image', class: 'center-block'
     .form
-      = bootstrap_form_for :session, url: users_sessions_path do |f|
+      = bootstrap_form_for :session, url: sessions_path do |f|
         = f.email_field :email
         = f.password_field :password
         = f.submit 'Sign in', class: 'btn btn-default btn-md'

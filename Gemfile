@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.1.1'
-gem 'bcrypt-ruby'
+gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap-sass', '~> 3.1.1'
 gem 'bootstrap_form'
 gem 'coffee-rails', '~> 4.0.0'
@@ -20,9 +20,9 @@ group :development, :test do
   gem 'childprocess'
   gem 'faker'
   gem 'guard'
-  gem 'guard-rspec', require: false
+  gem 'guard-rspec', '~> 4.2.10'
   gem 'lol_dba'
-  gem 'rspec-rails', '~> 2.14.1'
+  gem 'rspec-rails', '~> 3.0.1'
   gem 'sqlite3', '~> 1.3.8'
 end
 
@@ -38,4 +38,4 @@ group :production do
   gem 'pg', '~> 0.17.1'
 end
 
-ruby '2.1.0'
+ruby '2.1.2'
