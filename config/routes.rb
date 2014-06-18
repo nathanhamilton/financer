@@ -14,5 +14,5 @@ Financer::Application.routes.draw do
   get '/about',      to: 'static_pages#about'
   get '/signup',     to: 'users#new'
   get '/signin',     to: 'sessions#new'
-  get '/signout',    to: 'sessions#destroy'
+  delete '/signout',    to: 'sessions#destroy'
 end
