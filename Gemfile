@@ -13,6 +13,7 @@ gem 'newrelic_rpm'
 gem 'sass-rails', '~> 4.0.0'
 gem 'turbolinks'
 gem 'uglifier', '~> 1.3.0'
+gem 'kaminari', '~> 0.16.1'
 
 group :development, :test do
   gem 'better_errors'

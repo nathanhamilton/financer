@@ -4,7 +4,7 @@ class TransactionsController < ApplicationController
   before_action :banks
 
   def index
-    @transactions = envelope.transactions
+    @transactions = envelope.transactions.order(date: :desc).page(params[:page]).per(15)
   end
 
   def new

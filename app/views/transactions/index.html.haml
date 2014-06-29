@@ -5,7 +5,10 @@
     .panel.panel-default
       .panel-body
         %h4 Total in this envelope: #{number_to_currency(@envelope.transactions.sum('amount'))}
-
+    .link
+      = link_to 'Add Transaction', new_envelope_transaction_path, class: "btn btn-default btn-large"
+    .back_button
+      = link_to 'Back to Dashboard', dashboard_path, class: "btn btn-default btn-md"
     .transactions
       .table-responsive
         %table.table.table-hover
@@ -28,10 +31,6 @@
               %td
                 = button_to 'Edit', edit_envelope_transaction_path(id: transaction.id), class: "btn btn-xs"
                 = button_to 'Delete', envelope_transaction_path(id: transaction.id), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-xs editing"
-        .link
-          = link_to 'Add Transaction', new_envelope_transaction_path, class: "btn btn-default btn-large"
-    .back_button
-      = link_to 'Back to Dashboard', dashboard_path, class: "btn btn-default btn-md"
-
+      = paginate @transactions, :window => 2
   .col-sm-3.sidebar
     = render 'shared/sidebar'
