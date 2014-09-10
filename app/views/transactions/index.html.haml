@@ -17,7 +17,7 @@
             %th Transaction Type
             %th Date
             %th Amount
-            %th Edit
+            %th Actions
           - @transactions.each do |transaction|
             %tr
               %td
@@ -29,8 +29,8 @@
               %td
                 = number_to_currency(transaction.amount)
               %td
-                = button_to 'Edit', edit_envelope_transaction_path(id: transaction.id), class: "btn btn-xs"
-                = button_to 'Delete', envelope_transaction_path(id: transaction.id), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-xs editing"
+                = link_to 'Edit', edit_envelope_transaction_path(id: transaction.id)
+                = link_to 'Delete', envelope_transaction_path(id: transaction.id), method: :delete, data: { confirm: "Are you sure?" }
       = paginate @transactions, :window => 2
   .col-sm-3.sidebar
     = render 'shared/sidebar'
