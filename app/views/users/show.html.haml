@@ -1,21 +1,29 @@
-- provide(:title, "#{@user.name}")
+- provide(:title, "#{@user.name} Profile")
 .row
   .col-sm-9.content-area
     .content
-      %h1
-        = @user.name
-      %p Welcome to your financer profile. Please feel free to modify your personal details.
-      .users
-        %ol
-          %li
-            Name:
-            = @user.name
-          %li
-            Email:
-            = @user.email
-          = link_to 'Edit my personal details', edit_user_path(@user)
-      .banks
-        %h3 My Banks
-        = render "banks/index"
+      %h1 Profile
+      .row
+        .col-sm-6
+          .panel.panel-default
+            .panel-heading
+              Profile Info
+              = link_to 'Edit', edit_user_path(@user), class: 'float-right'
+            .panel-body
+              .users
+                %ol
+                  %li
+                    Name:
+                    = @user.name
+                  %li
+                    Email:
+                    = @user.email
+        .col-sm-6
+          .panel.panel-default
+            .panel-heading
+              My Banks
+              = link_to 'Add a bank', new_bank_path, class: 'float-right'
+            .panel-body
+              = render "banks/index"
   .col-sm-3.sidebar
     = render 'shared/sidebar'

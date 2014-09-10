@@ -27,25 +27,10 @@ li {
   text-align: left;
 }
 
-.button {
-  background-color: #68b12f;
-  width: 120px;
-  border: 1px solid #108211;
-  border-radius: 3px;
-  box-shadow: 0px 3px 9px black;
-  margin-left: 62.5px;
-  margin-bottom: 10px;
-  a {
-    color: black;
-  }
-  &:hover{
-    opacity: .9;
-  }
-}
-
 .content-area {
   background-color: white;
   padding: 20px;
+
   h1 {
     text-align: center;
   }
