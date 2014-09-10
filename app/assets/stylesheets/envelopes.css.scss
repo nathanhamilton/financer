@@ -1,3 +1,88 @@
-// Place all the styles related to the Envelopes controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.envelopes {
+  margin: 10px;
+  width: 500px;
+}
+
+.envelope {
+  margin-left: auto;
+  margin-right: auto;
+  clear: both;
+}
+
+.box {
+  width: 100%;
+  height: 50px;
+  background-color: rgba(83,189,99, .2);
+  border: 2px #53BD63 solid;
+  border-radius: 7px;
+  margin: 35px 0 6px 0;
+  font-size: 13px;
+  position: relative;
+
+  .category {
+    clear: right;
+    overflow: hidden;
+    font-size: 18px;
+    float: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    position: absolute;
+  }
+
+  a {
+    display: inline-block;
+    line-height: 1;
+    padding: 13px 5px;
+    width: 100%;
+    height: 100%;
+  }
+
+  .amount {
+    padding: 9px 5px;
+    text-align: center;
+    float: right;
+    font-size: 20px;
+    z-index: 2;
+  }
+
+}
+
+.action {
+  width: 90px;
+  height: 24px;
+  position: absolute;
+  background-color: rgba(83,189,99, .2);
+  padding: 2px;
+  top: 11px;
+  right: 20px;
+  border-left: 2px #53BD63 solid;
+  border-right: 2px #53BD63 solid;
+  border-top: 2px #53BD63 solid;
+  border-radius: 7px 7px 0 0 ;
+
+  @media (max-width: 768px) {
+    top: -23px;
+  }
+
+  a {
+   display: inline-block;
+   margin-left: 4px;
+  }
+}
+
+
+.add_envelope {
+  @extend .box;
+  padding: 0;
+  text-align: center;
+
+  a {
+    display: inline-block;
+    line-height: 1;
+    padding: 17px 0;
+    width: 100%;
+  }
+}
