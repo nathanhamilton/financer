@@ -1,0 +1,2 @@
+class AllocationController < ApplicationController
+end
