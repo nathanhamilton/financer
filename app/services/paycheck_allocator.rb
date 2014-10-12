@@ -1,3 +1,3 @@
-class PaycheckAllocator
+class IncomeAllocator
 
 end
