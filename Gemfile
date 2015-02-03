@@ -36,4 +36,4 @@ group :production do
   gem 'newrelic_rpm', '~> 3.9.9.275'
 end
 
-ruby '2.1.2'
+ruby '2.2.0'
