@@ -11,7 +11,9 @@ describe Transaction, type: :model do
       transaction_type: "Credit",
       date: "02/07/2014",
       amount: 400.30,
-      user_id: user.id
+      user_id: user.id,
+      institutionable_type: bank.name,
+      institutionable_id: bank.id
     }
 
     @transaction = envelope.transactions.build(attributes)
@@ -19,22 +21,32 @@ describe Transaction, type: :model do
 
   subject { @transaction }
 
-  it { is_expected.to respond_to :user }
-  it { is_expected.to respond_to :envelope }
-  it { is_expected.to respond_to :name }
-  it { is_expected.to respond_to :transaction_type }
-  it { is_expected.to respond_to :date }
-  it { is_expected.to respond_to :amount }
-  it { is_expected.to respond_to :user_id }
-  it { is_expected.to respond_to :envelope_id }
-  it { is_expected.to validate_presence_of :name }
-  it { is_expected.to validate_presence_of :transaction_type }
-  it { is_expected.to validate_presence_of :date }
-  it { is_expected.to validate_presence_of :amount }
-  it { is_expected.to validate_presence_of :user_id }
-  it { is_expected.to validate_presence_of :envelope_id }
-  it { is_expected.to belong_to :envelope }
-  it { is_expected.to belong_to :user }
+  describe 'associtaions' do
+    it { is_expected.to belong_to :envelope }
+    it { is_expected.to belong_to :institutionable }
+    it { is_expected.to belong_to :user }
+    it { is_expected.to respond_to :user }
+    it { is_expected.to respond_to :envelope }
+    it { is_expected.to respond_to :name }
+    it { is_expected.to respond_to :transaction_type }
+    it { is_expected.to respond_to :date }
+    it { is_expected.to respond_to :amount }
+    it { is_expected.to respond_to :user_id }
+    it { is_expected.to respond_to :envelope_id }
+    it { is_expected.to respond_to :institutionable_id }
+    it { is_expected.to respond_to :institutionable_type }
+  end
+
+  describe 'validations' do
+    it { is_expected.to validate_presence_of :name }
+    it { is_expected.to validate_presence_of :transaction_type }
+    it { is_expected.to validate_presence_of :date }
+    it { is_expected.to validate_presence_of :amount }
+    it { is_expected.to validate_presence_of :user_id }
+    it { is_expected.to validate_presence_of :envelope_id }
+    it { is_expected.to validate_presence_of :institutionable_id }
+    it { is_expected.to validate_presence_of :institutionable_type }
+  end
 
   describe '#envelope' do
     subject { super().envelope }
