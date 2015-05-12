@@ -10,27 +10,26 @@
     .back_button
       = link_to 'Back to Dashboard', dashboard_path, class: "btn btn-default btn-md"
     .transactions
-      .table-responsive
-        %table.table.table-hover
+      %table.table.table-hover
+        %tr
+          %th Name
+          %th Transaction Type
+          %th Date
+          %th Amount
+          %th Actions
+        - @transactions.each do |transaction|
           %tr
-            %th Name
-            %th Transaction Type
-            %th Date
-            %th Amount
-            %th Actions
-          - @transactions.each do |transaction|
-            %tr
-              %td
-                = transaction.name
-              %td
-                = transaction.transaction_type
-              %td
-                = transaction.date.to_formatted_s(:rfc822)
-              %td
-                = number_to_currency(transaction.amount)
-              %td
-                = link_to 'Edit', edit_envelope_transaction_path(id: transaction.id)
-                = link_to 'Delete', envelope_transaction_path(id: transaction.id), method: :delete, data: { confirm: "Are you sure?" }
+            %td
+              = transaction.name
+            %td
+              = transaction.transaction_type
+            %td
+              = transaction.date.to_formatted_s(:rfc822)
+            %td
+              = number_to_currency(transaction.amount)
+            %td
+              = link_to 'Edit', edit_envelope_transaction_path(id: transaction.id)
+              = link_to 'Delete', envelope_transaction_path(id: transaction.id), method: :delete, data: { confirm: "Are you sure?" }
       = paginate @transactions, :window => 2
   .col-sm-3.sidebar
     = render 'shared/sidebar'
