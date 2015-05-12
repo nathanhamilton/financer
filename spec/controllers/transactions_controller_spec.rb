@@ -31,14 +31,22 @@ describe TransactionsController, type: :controller do
 
   describe 'POST create' do
 
+    before do
+      @params = { envelope_id: envelope.id,
+                  transaction: { name: 'Test mart',
+                                 transaction_type: 'Check',
+                                 date: Time.now,
+                                 amount: 4000,
+                                 user_id: user.id,
+                                 envelope_id: envelope.id,
+                                 institutionable_id: 'bank',
+                                 institutionable_type: bank.id }
+                               }
+    end
+
     context 'success' do
       it 'should redirect to the envelopes path' do
-        post :create, envelope_id: envelope.id, transaction: { name: 'Test mart',
-                                                               transaction_type: 'Check',
-                                                               date: Time.now,
-                                                               amount: 4000,
-                                                               user_id: user.id,
-                                                               envelope_id: envelope.id}
+        post :create, @params
         expect(response).to redirect_to envelope_transactions_path(envelope)
       end
     end

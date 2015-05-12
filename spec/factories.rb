@@ -26,5 +26,7 @@ FactoryGirl.define do
     transaction_type 'Credit'
     date Time.now
     amount 350.40
+    institutionable_id 1
+    institutionable_type 'bank'
   end
 end
