@@ -1,3 +1,14 @@
+# User
+#
+# id:              integer
+# name:            string (255)
+# email:           string (255)
+# created_at:      datetime
+# updated_at:      datetime
+# password_digest: string (255)
+# admin:           boolean, default: false
+# remember_token:  string
+
 class User < ActiveRecord::Base
   before_save { self.email = email.downcase }
   has_many :banks, dependent: :destroy
