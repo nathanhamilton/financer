@@ -9,8 +9,7 @@
 # total:       decimal, precision: 11, scale: 2
 
 class Envelope < ActiveRecord::Base
-  belongs_to :bank
-  has_many :transactions, dependent: :destroy
+  has_many :transactions
 
-  validates_presence_of :bank_id, :category
+  validates_presence_of :category
 end

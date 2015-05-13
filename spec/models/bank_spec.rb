@@ -11,7 +11,6 @@ describe Bank, type: :model do
 
   describe 'associations' do
     it { is_expected.to belong_to :user }
-    it { is_expected.to have_many :envelopes }
     it { is_expected.to have_many :transactions }
     it { is_expected.to respond_to :name }
     it { is_expected.to respond_to :user_id }

@@ -7,20 +7,28 @@ describe User, type: :model do
 
   subject { @user }
 
-  it { is_expected.to respond_to :name }
-  it { is_expected.to respond_to :email }
-  it { is_expected.to respond_to :password_digest }
-  it { is_expected.to respond_to :password }
-  it { is_expected.to respond_to :password_confirmation }
-  it { is_expected.to respond_to :remember_token }
-  it { is_expected.to respond_to :authenticate }
-  it { is_expected.to respond_to :banks }
-  it { is_expected.to respond_to :envelopes }
-  it { is_expected.to respond_to :transactions }
-  it { is_expected.to have_many :banks }
-  it { is_expected.to have_many(:envelopes).through(:banks) }
-  it { is_expected.to have_many :transactions }
+  describe 'associations' do
+    it { is_expected.to have_many :banks }
+    it { is_expected.to have_many :envelopes }
+    it { is_expected.to have_many :transactions }
+    it { is_expected.to respond_to :name }
+    it { is_expected.to respond_to :email }
+    it { is_expected.to respond_to :password_digest }
+    it { is_expected.to respond_to :password }
+    it { is_expected.to respond_to :password_confirmation }
+    it { is_expected.to respond_to :remember_token }
+    it { is_expected.to respond_to :authenticate }
+    it { is_expected.to respond_to :banks }
+    it { is_expected.to respond_to :envelopes }
+    it { is_expected.to respond_to :transactions }
+  end
 
+  describe 'validations' do
+    it { is_expected.to validate_presence_of :name }
+    it { is_expected.to validate_presence_of :email }
+    it { is_expected.to validate_presence_of :password }
+    it { is_expected.to validate_presence_of :password_confirmation }
+  end
 
   it { is_expected.to be_valid }
 

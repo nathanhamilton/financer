@@ -18,7 +18,6 @@ FactoryGirl.define do
   factory :envelope do
     category 'car'
     total    20
-    bank_id 1
   end
 
   factory :transaction do

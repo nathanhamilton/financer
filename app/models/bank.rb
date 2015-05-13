@@ -8,8 +8,7 @@
 
 class Bank < ActiveRecord::Base
   belongs_to :user
-  has_many :envelopes, dependent: :destroy
-  has_many :transactions, as: :institutionable
+  has_many :transactions, as: :institutionable, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 50 }
 end

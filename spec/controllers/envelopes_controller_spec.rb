@@ -2,7 +2,6 @@ require 'rails_helper'
 
 describe EnvelopesController, type: :controller do
   let!(:user) { FactoryGirl.create :user }
-  let!(:bank) { FactoryGirl.create :bank }
 
   before do
     allow(controller).to receive(:current_user).and_return user
@@ -31,14 +30,14 @@ describe EnvelopesController, type: :controller do
 
     context "success" do
       it "creates the envelope" do
-        post :create, envelope: { category: 'Car', total: 30, bank_id: bank.id }
+        post :create, envelope: { category: 'Car', total: 30 }
         expect(response).to redirect_to dashboard_path
       end
     end
 
     context "failure" do
       it "renders the new page" do
-        post :create, envelope: { category: '', total: nil, bank_id: nil }
+        post :create, envelope: { category: '', total: nil }
         expect(response).to render_template :new
       end
     end
@@ -58,7 +57,7 @@ describe EnvelopesController, type: :controller do
 
     context "success" do
       it "redirects to user path" do
-        put :update, id: envelope.id, envelope: { category: "home", total: 200, bank_id: bank.id }
+        put :update, id: envelope.id, envelope: { category: "home", total: 200 }
         expect(response).to redirect_to dashboard_path
       end
     end

@@ -1,6 +1,5 @@
 class EnvelopesController < ApplicationController
   before_action :envelope, only: :edit
-  before_action :banks, only: [:new, :index, :edit]
 
   def index
     @envelopes = current_user.envelopes
@@ -40,14 +39,10 @@ class EnvelopesController < ApplicationController
   private
 
   def envelope_params
-    params.require(:envelope).permit(:category, :total, :bank_id)
+    params.require(:envelope).permit(:category, :total)
   end
 
   def envelope
     @envelope ||= Envelope.find(params[:id])
-  end
-
-  def banks
-    @banks ||= current_user.banks
   end
 end
