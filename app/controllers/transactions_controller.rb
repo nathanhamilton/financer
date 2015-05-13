@@ -49,11 +49,13 @@ class TransactionsController < ApplicationController
     @transaction ||= Transaction.find(params[:id])
   end
 
-  def transaction_params
-    params.require(:transaction).permit(:name, :transaction_type, :date, :amount, :user_id, :envelope_id)
-  end
-
   def banks
     @banks = current_user.banks
+  end
+
+  def transaction_params
+    params.require(:transaction).permit(:name, :transaction_type, :date,
+                                        :amount, :user_id, :envelope_id,
+                                        :institutionable_id, :institutionable_type)
   end
 end
