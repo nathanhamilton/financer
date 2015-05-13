@@ -8,13 +8,20 @@ describe Bank, type: :model do
   end
 
   subject { @bank }
-  it { is_expected.to respond_to :name }
-  it { is_expected.to respond_to :user_id }
-  it { is_expected.to respond_to :user }
-  it { is_expected.to respond_to :transaction }
-  it { is_expected.to belong_to :user }
-  it { is_expected.to have_many :envelopes }
-  it { is_expected.to have_many(:transactions).through(:envelopes) }
+
+  describe 'associations' do
+    it { is_expected.to belong_to :user }
+    it { is_expected.to have_many :envelopes }
+    it { is_expected.to have_many :transactions }
+    it { is_expected.to respond_to :name }
+    it { is_expected.to respond_to :user_id }
+    it { is_expected.to respond_to :user }
+    it { is_expected.to respond_to :transactions }
+  end
+
+  describe 'validations' do
+    it { is_expected.to validate_presence_of :name }
+  end
 
   describe '#user' do
     subject { super().user }
