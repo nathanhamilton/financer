@@ -2,7 +2,8 @@ class EnvelopesController < ApplicationController
   before_action :envelope, only: :edit
 
   def index
-    @envelopes = current_user.envelopes
+    @banks = Bank.where(user_id: current_user.id)
+    @envelopes = Envelope.where(user_id: current_user.id)
   end
 
   def new
@@ -10,7 +11,7 @@ class EnvelopesController < ApplicationController
   end
 
   def create
-    @envelope = current_user.envelopes.new(envelope_params)
+    @envelope = Envelope.new(envelope_params)
     if @envelope.save
       flash[:success] = 'Congratulations! Your envelope has been created!'
       redirect_to dashboard_path
@@ -22,7 +23,7 @@ class EnvelopesController < ApplicationController
 
   def update
     if envelope.update(envelope_params)
-      flash[:success] = "Envelope was update"
+      flash[:success] = "The Envelope was updated"
       redirect_to dashboard_path
     else
       flash.now[:error] = envelope.errors.full_messages.to_sentence
@@ -32,7 +33,7 @@ class EnvelopesController < ApplicationController
 
   def destroy
     envelope.destroy
-    flash[:success] = "Envelope deleted"
+    flash[:success] = "The Envelope was deleted"
     redirect_to dashboard_path
   end
 

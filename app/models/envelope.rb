@@ -7,6 +7,7 @@
 # created_at:  datetime
 # updated_at:  datetime
 # total:       decimal, precision: 11, scale: 2
+# user_id:     integer
 
 class Envelope < ActiveRecord::Base
   has_many :transactions
