@@ -15,6 +15,7 @@ gem 'uglifier', '~> 2.7.0'
 gem 'kaminari', '~> 0.16.2'
 gem 'pg', '~> 0.18.1'
 gem 'pry-rails', '~> 0.3.2'
+gem 'progressbar', '~> 0.21.0'
 
 group :test do
   gem 'faker', '~> 1.4.3'
