@@ -26,8 +26,6 @@ describe User, type: :model do
   describe 'validations' do
     it { is_expected.to validate_presence_of :name }
     it { is_expected.to validate_presence_of :email }
-    it { is_expected.to validate_presence_of :password }
-    it { is_expected.to validate_presence_of :password_confirmation }
   end
 
   it { is_expected.to be_valid }
@@ -51,7 +49,7 @@ describe User, type: :model do
     it "should not be valid" do
       addresses = %w[user@foo,com user_at_foo.org example.user@foo. foo@bar_baz.com foo@bar+bas.com]
       addresses.each do |invalid_address|
-        @user.email = invalid_address
+        @user = User.new(FactoryGirl.attributes_for(User, email: invalid_address))
         expect(@user).not_to be_valid
       end
     end
