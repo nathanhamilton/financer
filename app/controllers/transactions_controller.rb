@@ -19,6 +19,7 @@ class TransactionsController < ApplicationController
       redirect_to envelope_transactions_path(envelope)
     else
       flash.now[:error] = @transaction.errors.full_messages.to_sentence
+      @banks = current_user.banks
       render :new
     end
   end

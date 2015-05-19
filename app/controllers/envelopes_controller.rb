@@ -40,7 +40,7 @@ class EnvelopesController < ApplicationController
   private
 
   def envelope_params
-    params.require(:envelope).permit(:category, :total)
+    params.require(:envelope).permit(:category, :user_id)
   end
 
   def envelope
