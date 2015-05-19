@@ -28,6 +28,14 @@ class Transaction < ActiveRecord::Base
     end
   end
 
+  def self.by_envelope(params)
+    self.where(envelope_id: params[:envelope_id])
+  end
+
+  def self.by_institution(params)
+    self.where(institutionable_id: params[:institutionable_id])
+  end
+
   def transaction_type_object
     TransactionType.find_by_name transaction_type
   end

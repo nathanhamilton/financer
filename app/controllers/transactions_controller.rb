@@ -1,10 +1,10 @@
 class TransactionsController < ApplicationController
   before_action :transaction, only: :edit
-  before_action :envelope, only: [:new, :edit]
-  before_action :banks
+  before_action :envelope, only: [:index, :new, :edit]
+  before_action :banks, only: [:index, :new, :edit]
 
   def index
-    @transactions = envelope.transactions.order(date: :desc).page(params[:page]).per(15)
+    @transactions = Transaction.by_envelope(params).order(date: :desc).page(params[:page]).per(15)
   end
 
   def new

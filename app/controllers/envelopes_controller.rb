@@ -1,8 +1,8 @@
 class EnvelopesController < ApplicationController
   before_action :envelope, only: :edit
+  before_action :banks, only: [:index, :new, :edit]
 
   def index
-    @banks = Bank.where(user_id: current_user.id)
     @envelopes = Envelope.where(user_id: current_user.id)
   end
 
@@ -45,5 +45,9 @@ class EnvelopesController < ApplicationController
 
   def envelope
     @envelope ||= Envelope.find(params[:id])
+  end
+
+  def banks
+    @banks = Bank.where(user_id: current_user.id)
   end
 end
