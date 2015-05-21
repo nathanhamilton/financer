@@ -36,6 +36,10 @@ class Transaction < ActiveRecord::Base
     self.where(institutionable_id: params[:institutionable_id])
   end
 
+  def institution_name
+    Bank.find(institutionable_id).name
+  end
+
   def transaction_type_object
     TransactionType.find_by_name transaction_type
   end

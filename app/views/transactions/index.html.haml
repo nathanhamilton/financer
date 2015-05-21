@@ -14,6 +14,7 @@
         %tr
           %th Name
           %th Transaction Type
+          %th Institution
           %th Date
           %th Amount
           %th Actions
@@ -23,6 +24,8 @@
               = transaction.name
             %td
               = transaction.transaction_type
+            %td
+              = transaction.institutionable_id
             %td
               = transaction.date.to_formatted_s(:rfc822)
             %td
