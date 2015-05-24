@@ -15,7 +15,6 @@ class TransactionsController < ApplicationController
     @transaction = envelope.transactions.new(transaction_params)
     @transaction.institutionable_type = Bank
     @transaction.user_id = current_user.id
-    asdf
     if @transaction.save
       flash[:success] = 'Transaction created'
       redirect_to envelope_transactions_path(envelope)

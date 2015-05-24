@@ -1,4 +1,5 @@
 window.EnvelopesEditor = class EnvelopesEditor
+
   constructor: ->
     @show()
     @hide()

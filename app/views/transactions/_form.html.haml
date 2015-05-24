@@ -1,8 +1,27 @@
 .form
-  = bootstrap_form_for [@envelope, @transaction] do |f|
-    = f.text_field :name
-    = f.select :transaction_type, TransactionType.all.map { |t| t.name }
-    = f.date_select :date, order: [:month, :day, :year], default: Time.zone.now.to_date
-    = f.select :institutionable_id, Bank.all.map { |t| t.id }, prompt: 'Please select one'
-    = f.number_field :amount, step: 0.01
-    = f.submit class: 'submit btn btn-default'
+  = form_for [@envelope, @transaction] do |f|
+    .form-group
+      = f.label 'Transaction Name', class: 'control-label'
+      = f.text_field :name, class: 'form-control'
+    .form-group
+      = f.label :transaction_type, class: 'control-label'
+      .pad-r-10
+        = f.select :transaction_type, TransactionType.all.map { |t| t.name }, class: 'form-control'
+    .form-group
+      = f.label :institutionable_id, 'Bank', class: 'control-label'
+      .pad-r-10
+        = f.select :institutionable_id, Bank.all.map { |t| t.id }, prompt: 'Please select one', class: 'form-control'
+    .form-group
+      = f.label :date, class: 'control-label'
+      .pad-r-10
+        = f.text_field :date, class: 'minicaled form-control', placeholder: 'MM/DD/YYYY'
+    .form-group
+      = f.label :amount, class: 'control-label'
+      = f.number_field :amount, step: 0.01, class: 'form-control'
+    .form-group.over20
+      .float-right
+        = link_to 'Cancel', envelope_transactions_path, class: 'btn btn-default btn-md'
+        = f.submit class: 'submit btn btn-default btn-success'
+
+:javascript
+  new Minicalify()
