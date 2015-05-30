@@ -12,14 +12,14 @@ class TransactionsController < ApplicationController
   end
 
   def create
-    @transaction = envelope.transactions.new(transaction_params)
-    @transaction.institutionable_type = Bank
-    @transaction.user_id = current_user.id
-    if @transaction.save
+    # The institutionable assignment is only temporary until credit cards are instituted
+    params[:transaction][:institutionable_type] = 'Bank'
+    manager = TransactionManager.new(transaction_params, envelope, current_user.id)
+    if manager.create
       flash[:success] = 'Transaction created'
       redirect_to envelope_transactions_path(envelope)
     else
-      flash.now[:error] = @transaction.errors.full_messages.to_sentence
+      flash.now[:error] = manager.error_messages
       @banks = current_user.banks
       render :new
     end

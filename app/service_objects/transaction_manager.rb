@@ -1,19 +1,52 @@
 class TransactionManager
 
-  attr_accessor :params, :envelope
+  attr_accessor :errors
 
-  def initialize(params, envelope)
+  def initialize(params, envelope, user_id)
     @params = params
     @envelope = envelope
+    @user_id = user_id
+    @errors = []
+  end
+
+  def error_messages
+    errors.join(', ')
   end
 
   def create
+    values_exist?
+    check_name_length
     errors.blank? ? create_transaction : false
   end
 
   private
 
-  def create_transaction
+  attr_accessor :params, :user_id, :envelope
 
+  def create_transaction
+    Transaction.transaction do
+      Transaction.create!(name: params[:name],
+                          amount: params[:amount],
+                          transaction_type: params[:transaction_type],
+                          date: params[:date],
+                          user_id: user_id,
+                          envelope_id: envelope.id,
+                          institutionable_id: params[:institutionable_id],
+                          institutionable_type: params[:institutionable_type])
+    end
+  end
+
+  def check_name_length
+    if params[:name].length > 100
+      errors << 'The name you have submitted is longer than 100 characters'
+    end
+  end
+
+  def values_exist?
+    params.each do |key, value|
+      if value == nil
+        errors << "#{key} cannot be empty"
+      end
+    end
   end
 end

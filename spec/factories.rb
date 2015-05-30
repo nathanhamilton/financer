@@ -18,6 +18,7 @@ FactoryGirl.define do
   factory :envelope do
     category 'car'
     total    20
+    user_id  1
   end
 
   factory :transaction do
@@ -26,6 +27,7 @@ FactoryGirl.define do
     date Time.now
     amount 350.40
     institutionable_id 1
-    institutionable_type 'bank'
+    institutionable_type 'Bank'
+    association :institutionable, factory: :bank
   end
 end

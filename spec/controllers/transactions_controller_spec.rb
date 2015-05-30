@@ -39,8 +39,7 @@ describe TransactionsController, type: :controller do
                                  amount: 4000,
                                  user_id: user.id,
                                  envelope_id: envelope.id,
-                                 institutionable_id: 'bank',
-                                 institutionable_type: bank.id }
+                                 institutionable_id: bank.id }
                                }
     end
 
@@ -66,6 +65,7 @@ describe TransactionsController, type: :controller do
   describe "GET edit" do
     let!(:transaction) { FactoryGirl.create :transaction, envelope_id: envelope.id,
                                                           user_id: user.id }
+
 
     it "edits the transaction" do
       get :edit, envelope_id: envelope.id, id: transaction.id

@@ -17,7 +17,7 @@ class Transaction < ActiveRecord::Base
   belongs_to :envelope
   belongs_to :institutionable, polymorphic: true
 
-  validates :name, presence: true, length: { maximum: 50 }
+  validates :name, presence: true, length: { maximum: 100 }
   validates_presence_of :transaction_type, :date, :amount, :user_id, :envelope_id, :institutionable_id, :institutionable_type
 
   before_save :check_transaction_type

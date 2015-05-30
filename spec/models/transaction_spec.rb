@@ -61,7 +61,7 @@ describe Transaction, type: :model do
   end
 
   describe "when name is too long" do
-    before { @transaction.name = 'a' * 51}
+    before { @transaction.name = 'a' * 101}
     it { is_expected.not_to be_valid }
   end
 
