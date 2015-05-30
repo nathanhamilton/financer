@@ -30,7 +30,7 @@ describe EnvelopesController, type: :controller do
 
     context "success" do
       it "creates the envelope" do
-        post :create, envelope: { category: 'Car', total: 30 }
+        post :create, envelope: { category: 'Car', total: 30, user_id: user.id }
         expect(response).to redirect_to dashboard_path
       end
     end
