@@ -24,7 +24,7 @@ class EnvelopesController < ApplicationController
   def update
     if envelope.update(envelope_params)
       flash[:success] = "The Envelope was updated"
-      redirect_to dashboard_path
+      redirect_to envelope_path(envelope)
     else
       flash.now[:error] = envelope.errors.full_messages.to_sentence
       render :edit

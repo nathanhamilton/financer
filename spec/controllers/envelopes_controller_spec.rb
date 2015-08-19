@@ -58,7 +58,7 @@ describe EnvelopesController, type: :controller do
     context "success" do
       it "redirects to user path" do
         put :update, id: envelope.id, envelope: { category: "home", total: 200 }
-        expect(response).to redirect_to dashboard_path
+        expect(response).to redirect_to envelope_path
       end
     end
 
