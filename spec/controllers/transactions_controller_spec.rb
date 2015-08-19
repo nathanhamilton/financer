@@ -35,7 +35,7 @@ describe TransactionsController, type: :controller do
       @params = { envelope_id: envelope.id,
                   transaction: { name: 'Test mart',
                                  transaction_type: 'Check',
-                                 date: Time.now,
+                                 date: '08/03/2015',
                                  amount: 4000,
                                  user_id: user.id,
                                  envelope_id: envelope.id,

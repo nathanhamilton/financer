@@ -28,11 +28,12 @@ class TransactionManager
       Transaction.create!(name: params[:name],
                           amount: params[:amount],
                           transaction_type: params[:transaction_type],
-                          date: params[:date],
+                          date: Date.strptime(params[:date].to_s, "%m/%d/%Y"),
                           user_id: user_id,
                           envelope_id: envelope.id,
                           institutionable_id: params[:institutionable_id],
-                          institutionable_type: params[:institutionable_type])
+                          institutionable_type: 'Bank')
+    # The institutionable assignment is only temporary until credit cards are instituted
     end
   end
 

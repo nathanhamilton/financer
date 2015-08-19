@@ -24,7 +24,7 @@ FactoryGirl.define do
   factory :transaction do
     name 'Wallbreans shopping'
     transaction_type 'Credit'
-    date Time.now
+    date Date.today
     amount 350.40
     institutionable_id 1
     institutionable_type 'Bank'
