@@ -19,9 +19,9 @@ task add_user_id_to_nil_envelopes: :environment do
   pb = ProgressBar.new('Envelopes', Envelope.all.count)
 
   Envelope.all.each do |envelope|
-    if envelope.user_id == nil
-      bank = Bank.find(envelope.bank_id)
-      envelope.user_id = bank.user_id
+    bank_present = Bank.all.ids.include?(envelope.bank_id)
+    if envelope.user_id == nil && bank_present
+      envelope.user_id = Bank.find(envelope.bank_id).user_id
       envelope.save
     end
     pb.inc
