@@ -25,9 +25,9 @@
             %td
               = transaction.transaction_type
             %td
-              = transaction.institutionable_id
+              = transaction.institutionable.name
             %td
-              = transaction.date.to_formatted_s(:rfc822)
+              = transaction.date.to_s(:long)
             %td
               = number_to_currency(transaction.amount)
             %td

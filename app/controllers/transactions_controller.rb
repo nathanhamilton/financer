@@ -4,7 +4,7 @@ class TransactionsController < ApplicationController
   before_action :banks, only: [:index, :new, :edit]
 
   def index
-    @transactions = Transaction.by_envelope(params).order(date: :desc).page(params[:page]).per(15)
+    @transactions = Transaction.includes(:institutionable).by_envelope(params).order(date: :desc).page(params[:page]).per(15)
   end
 
   def new
