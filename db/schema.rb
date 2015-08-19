@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20150513043835) do
   enable_extension "plpgsql"
 
   create_table "banks", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
@@ -27,23 +27,23 @@ ActiveRecord::Schema.define(version: 20150513043835) do
 
   create_table "envelopes", force: :cascade do |t|
     t.integer  "bank_id"
-    t.string   "category"
-    t.boolean  "deleted",                             default: false
+    t.string   "category",   limit: 255
+    t.boolean  "deleted",                                         default: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "total",      precision: 11, scale: 2
+    t.decimal  "total",                  precision: 11, scale: 2
     t.integer  "user_id"
   end
 
   add_index "envelopes", ["bank_id"], name: "index_envelopes_on_bank_id", using: :btree
 
   create_table "transactions", force: :cascade do |t|
-    t.string   "name"
-    t.string   "transaction_type"
+    t.string   "name",                 limit: 255
+    t.string   "transaction_type",     limit: 255
     t.date     "date"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "amount",               precision: 11, scale: 2
+    t.decimal  "amount",                           precision: 11, scale: 2
     t.integer  "user_id"
     t.integer  "envelope_id"
     t.integer  "institutionable_id"
@@ -51,13 +51,13 @@ ActiveRecord::Schema.define(version: 20150513043835) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name"
-    t.string   "email"
+    t.string   "name",            limit: 255
+    t.string   "email",           limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "password_digest"
-    t.boolean  "admin",           default: false
-    t.string   "remember_token"
+    t.string   "password_digest", limit: 255
+    t.boolean  "admin",                       default: false
+    t.string   "remember_token",  limit: 255
   end
 
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
