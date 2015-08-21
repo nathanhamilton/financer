@@ -13,6 +13,8 @@
 # institutionable_type:  string (255)
 
 class Transaction < ActiveRecord::Base
+  include MinicalSetter
+
   belongs_to :user
   belongs_to :envelope
   belongs_to :institutionable, polymorphic: true
@@ -22,7 +24,6 @@ class Transaction < ActiveRecord::Base
                         :envelope_id, :institutionable_id, :institutionable_type
 
   before_create :check_transaction_type
-  # after_validation :modify_date
 
   def check_transaction_type
     if transaction_type_object.negative?
@@ -30,23 +31,12 @@ class Transaction < ActiveRecord::Base
     end
   end
 
-  # def modify_date
-  #   date = changed_attributes[:date]
-  #   if date.present?
-  #     self.date = date
-  #   end
-  # end
-
   def self.by_envelope(params)
     self.where(envelope_id: params[:envelope_id])
   end
 
   def self.by_institution(params)
     self.where(institutionable_id: params[:institutionable_id])
-  end
-
-  def institution_name
-    Bank.find(institutionable_id).name
   end
 
   def transaction_type_object

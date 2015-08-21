@@ -12,7 +12,7 @@ describe TransactionManager do
         @params = {
           name: 'Wonderworld groceries',
           transaction_type: 'Debit',
-          date: '08/03/2015' ,
+          minical_date: '08/03/2015' ,
           amount: 40.00 ,
           institutionable_id: bank.id,
           institutionable_type: 'Bank'
@@ -83,7 +83,7 @@ describe TransactionManager do
           end.to change { Transaction.count }.by 0
         end
 
-        it 'should return the name length error' do
+        it 'should return the attribute missing error' do
           manager.create
           expect(manager.errors[0]).to eq 'amount cannot be empty'
         end

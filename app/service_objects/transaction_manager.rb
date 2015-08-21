@@ -28,7 +28,7 @@ class TransactionManager
       Transaction.create!(name: params[:name],
                           amount: params[:amount],
                           transaction_type: params[:transaction_type],
-                          date: Date.strptime(params[:date].to_s, "%m/%d/%Y"),
+                          minical_date: params[:minical_date],
                           user_id: user_id,
                           envelope_id: envelope.id,
                           institutionable_id: params[:institutionable_id],
