@@ -21,13 +21,21 @@ class Transaction < ActiveRecord::Base
   validates_presence_of :transaction_type, :date, :amount, :user_id,
                         :envelope_id, :institutionable_id, :institutionable_type
 
-  before_save :check_transaction_type
+  before_create :check_transaction_type
+  # after_validation :modify_date
 
   def check_transaction_type
     if transaction_type_object.negative?
       self.amount = -self.amount
     end
   end
+
+  # def modify_date
+  #   date = changed_attributes[:date]
+  #   if date.present?
+  #     self.date = date
+  #   end
+  # end
 
   def self.by_envelope(params)
     self.where(envelope_id: params[:envelope_id])

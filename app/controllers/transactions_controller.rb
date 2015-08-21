@@ -26,7 +26,7 @@ class TransactionsController < ApplicationController
   def update
     if transaction.update(transaction_params)
       flash[:success] = 'Transaction updated'
-      redirect_to envelope_transactions_path(envelope)
+      redirect_to envelope_path(envelope)
     else
       @envelope = envelope
       @banks = banks
