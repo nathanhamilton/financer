@@ -10,7 +10,7 @@
     .form-group
       = f.label :institutionable_id, 'Bank', class: 'control-label'
       .pad-r-10
-        = f.select :institutionable_id, options_from_collection_for_select(Bank.all, 'id', 'name'), class: 'form-control'
+        = f.select :institutionable_id, options_from_collection_for_select(@banks, 'id', 'name'), class: 'form-control'
     .form-group
       = f.label :date, class: 'control-label'
       .pad-r-10
