@@ -27,7 +27,7 @@
             %td
               = transaction.institutionable.name
             %td
-              = transaction.date.to_s(:long)
+              = transaction.date.to_s(:all_short)
             %td
               = number_to_currency(transaction.amount)
             %td
