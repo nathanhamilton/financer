@@ -1,7 +1,6 @@
 # Envelope
 #
 # id:          integer
-# bank_id:     integer
 # category:    string (255)
 # deleted:     boolean, default: false
 # created_at:  datetime

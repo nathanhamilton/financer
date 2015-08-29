@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150513043835) do
+ActiveRecord::Schema.define(version: 20150829165627) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(version: 20150513043835) do
   add_index "banks", ["user_id"], name: "index_banks_on_user_id", using: :btree
 
   create_table "envelopes", force: :cascade do |t|
-    t.integer  "bank_id"
     t.string   "category",   limit: 255
     t.boolean  "deleted",                                         default: false
     t.datetime "created_at"
@@ -34,8 +33,6 @@ ActiveRecord::Schema.define(version: 20150513043835) do
     t.decimal  "total",                  precision: 11, scale: 2
     t.integer  "user_id"
   end
-
-  add_index "envelopes", ["bank_id"], name: "index_envelopes_on_bank_id", using: :btree
 
   create_table "transactions", force: :cascade do |t|
     t.string   "name",                 limit: 255
