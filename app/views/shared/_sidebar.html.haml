@@ -6,16 +6,13 @@
 .btn-group.btn-group-xs
   = link_to dashboard_path, class: "btn btn-default" do
     %span.glyphicon.glyphicon-home
-    Home
+    Dashboard
   = link_to user_path(current_user), class: "btn btn-default" do
     %span.glyphicon.glyphicon-user
-    Profile
+    My Profile
   = link_to signout_path, method: 'delete', class: "btn btn-default" do
     %span.glyphicon.glyphicon-off
     Log Off
-  = link_to '#', class: "btn btn-default" do
-    %span.glyphicon.glyphicon-stats
-    Stats
 .totals.well
   .total
     %p
