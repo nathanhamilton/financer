@@ -2,23 +2,6 @@
 .row
   .col-sm-9.content-area
     .row
-      %h3.pad-l-15 Envelopes
-      - @envelopes.each do |envelope|
-        .col-sm-6.col-md-4.position-relative.box-trigger
-          .box.envelope
-            .category
-              = link_to envelope.category, envelope_transactions_path(envelope)
-            .amount
-              .float-right
-                = number_to_currency(envelope.transactions.sum('amount'))
-          .action.is-hidden
-            = link_to 'Edit', edit_envelope_path(envelope)
-            = link_to 'Delete', envelope_path(envelope), method: :delete, data: { confirm: 'Are you sure?' }
-      .col-sm-6.col-md-4
-        .add_envelope
-          =link_to 'Add Envelope', new_envelope_path
-    .row
-      %hr
       %h3.pad-l-15 Banks
       - @banks.each do |bank|
         .col-sm-6.col-md-4.position-relative.box-trigger
@@ -34,6 +17,23 @@
       .col-sm-6.col-md-4
         .add_envelope
           =link_to 'Add Bank', new_bank_path
+    .row
+      %hr
+      %h3.pad-l-15 Envelopes
+      - @envelopes.each do |envelope|
+        .col-sm-6.col-md-4.position-relative.box-trigger
+          .box.envelope
+            .category
+              = link_to envelope.category, envelope_transactions_path(envelope)
+            .amount
+              .float-right
+                = number_to_currency(envelope.transactions.sum('amount'))
+          .action.is-hidden
+            = link_to 'Edit', edit_envelope_path(envelope)
+            = link_to 'Delete', envelope_path(envelope), method: :delete, data: { confirm: 'Are you sure?' }
+      .col-sm-6.col-md-4
+        .add_envelope
+          =link_to 'Add Envelope', new_envelope_path
 
   .col-sm-3.sidebar
     = render 'shared/sidebar'
