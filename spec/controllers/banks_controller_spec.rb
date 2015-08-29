@@ -9,6 +9,14 @@ describe BanksController, type: :controller do
     end
   end
 
+  describe "GET show" do
+    let(:bank) { FactoryGirl.create :bank }
+    it "shows the banks transactions" do
+      get :show, id: bank.id
+      expect(response).to be_success
+    end
+  end
+
   describe "GET new" do
     it "creates a new bank" do
       get :new

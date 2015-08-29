@@ -2,6 +2,15 @@ class BanksController < ApplicationController
   before_action :bank, only: :edit
   before_action :banks
 
+  def show
+    @bank = Bank.find(params[:id])
+    @transactions = Transaction.includes(:institutionable)
+                               .where(institutionable_id: @bank.id)
+                               .order(date: :desc)
+                               .page(params[:page])
+                               .per(15)
+  end
+
   def new
     @bank = Bank.new
   end

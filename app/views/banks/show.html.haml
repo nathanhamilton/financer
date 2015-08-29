@@ -1,0 +1,29 @@
+- provide(:title, "Transactions")
+.row
+  .col-sm-9.content-area
+    %h1 Transactions for #{@bank.name}
+    .panel.panel-default
+      .panel-body
+        %h4 Total in this envelope: #{number_to_currency(@bank.transactions.sum('amount'))}
+    .float-right
+      = link_to 'Back to Profile', user_path(@bank.user_id), class: "btn btn-default btn-md under20"
+    .transactions
+      %table.table.table-hover
+        %tr
+          %th Name
+          %th Transaction Type
+          %th Date
+          %th Amount
+        - @transactions.each do |transaction|
+          %tr
+            %td
+              = transaction.name
+            %td
+              = transaction.transaction_type
+            %td
+              = transaction.date.to_s(:all_short)
+            %td
+              = number_to_currency(transaction.amount)
+      = paginate @transactions, :window => 2
+  .col-sm-3.sidebar
+    = render 'shared/sidebar'

@@ -2,7 +2,7 @@ Financer::Application.routes.draw do
 
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
-  resources :banks, except: [:index, :show]
+  resources :banks, except: :index
   resources :envelopes do
     resources :transactions
   end
