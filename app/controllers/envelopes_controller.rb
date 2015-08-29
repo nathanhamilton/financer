@@ -4,6 +4,7 @@ class EnvelopesController < ApplicationController
 
   def index
     @envelopes = Envelope.where(user_id: current_user.id)
+    @banks = Bank.where(user_id: current_user.id)
   end
 
   def new

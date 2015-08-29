@@ -1,9 +1,0 @@
-%ul.list-group
-  - @user.banks.each do |bank|
-    %li.list-group-item
-      Name:
-      = bank.name
-      .float-right
-        = link_to 'Edit', edit_bank_path(bank)
-        = link_to 'Delete', bank, method: :delete, data: { confirm: 'Are you sure?' }
-

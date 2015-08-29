@@ -3,27 +3,18 @@
   .col-sm-9.content-area
     .content
       %h1 Profile
-      .row
-        .col-sm-6
-          .panel.panel-default
-            .panel-heading
-              Profile Info
-              = link_to 'Edit', edit_user_path(@user), class: 'float-right'
-            .panel-body
-              .users
-                %ol
-                  %li
-                    Name:
-                    = @user.name
-                  %li
-                    Email:
-                    = @user.email
-        .col-sm-6
-          .panel.panel-default
-            .panel-heading
-              My Banks
-              = link_to 'Add a bank', new_bank_path, class: 'float-right'
-            .panel-body
-              = render "banks/index"
+      .panel.panel-default
+        .panel-heading
+          Profile Info
+          = link_to 'Edit', edit_user_path(@user), class: 'float-right'
+        .panel-body
+          .users
+            %ol
+              %li
+                Name:
+                = @user.name
+              %li
+                Email:
+                = @user.email
   .col-sm-3.sidebar
     = render 'shared/sidebar'

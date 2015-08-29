@@ -21,7 +21,7 @@ describe BanksController, type: :controller do
     context "success" do
       it "redirects to the user page" do
         get :create, bank: { name: "TLC Bank" }
-        expect(response).to redirect_to user_path(user)
+        expect(response).to redirect_to dashboard_path
       end
     end
 
@@ -48,7 +48,7 @@ describe BanksController, type: :controller do
     context "success" do
       it "should be successful" do
         put :update, id: bank.id, bank: { name: "Legacy Bank" }
-        expect(response).to redirect_to user_path(user)
+        expect(response).to redirect_to dashboard_path
       end
     end
 
@@ -65,7 +65,7 @@ describe BanksController, type: :controller do
 
     it "deletes the selected bank" do
       delete :destroy, id: bank.id
-      expect(response).to redirect_to user_path(user)
+      expect(response).to redirect_to dashboard_path
     end
   end
 end
