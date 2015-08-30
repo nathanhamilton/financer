@@ -6,7 +6,7 @@
       .panel-body
         %h4 Total in this envelope: #{number_to_currency(@bank.transactions.sum('amount'))}
     .float-right
-      = link_to 'Back to Dashboard', dashboard_path(@bank.user_id), class: "btn btn-default btn-md under20"
+      = link_to 'Back to Dashboard', dashboard_path, class: "btn btn-default btn-md under20"
     .transactions
       %table.table.table-hover
         %tr
