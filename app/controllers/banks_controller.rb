@@ -37,6 +37,7 @@ class BanksController < ApplicationController
   end
 
   def destroy
+    Transaction.where(institutionable_id: bank.id).delete_all
     bank.delete
     flash[:success] = "Bank has been deleted"
     redirect_to dashboard_path
